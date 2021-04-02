@@ -5,60 +5,60 @@
 <a href=https://movie.douban.com/people/lingluoyanchen/collect title=movie target=_blank><i class=remixicon-movie-fill></i></a>
 <a href="https://music.163.com/#/my/m/music/playlist?id=97552201" title=music target=_blank><i class=remixicon-music-fill></i></a>
 <a href=https://twitter.com/DesperadoYan title=twitter target=_blank><i class=remixicon-twitter-fill></i></a>
-<a href=https://sanoon.me/index.xml type=application/rss+xml title=rss target=_blank><i class=remixicon-rss-fill></i></a></div></div></div></div><div class=content><div class=post_page><div class="post animated fadeInDown"><div class="post_title post_detail_title"><h2><a href=/posts/SpringBoot%E5%A4%84%E7%90%86404%E5%BC%82%E5%B8%B8%E8%BF%94%E5%9B%9EJSON%E6%A0%BC%E5%BC%8F%E6%95%B0%E6%8D%AE/>SpringBoot 处理 404 异常返回 JSON 格式数据</a></h2><span class=date>2021.03.31</span></div><div class="post_content markdown"><p><code>Spring Boot</code> 默认对 <code>404</code> 异常处理会重定向到 /error 进行处理，现在流行前后端分离开发，后端基本上不配置静态资源，前后端交互使用 <code>XML</code> 或者 <code>JSON</code> 格式的报文，本文就以返回 <code>JSON</code> 为例，来处理 <code>404</code> 异常。</p><p>接上一节<a href=https://sanoon.me/posts/SpringBoot2%E5%88%9D%E4%BD%93%E9%AA%8C/>Spring Boot 初体验</a>，当我们访问任何不存在的接口时，会触发 <code>NoHandlerFoundException</code> 异常，我们只需要使用 <code>Spring</code> 提供的全局异常处理机制拦截该异常，并重新返回参数即可。</p><p>首先我们需要在 <code>application.properties</code> 中配置以下参数</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#960050;background-color:#1e0010>#</span> NoHandlerFound异常
-spring<span style=color:#f92672>.</span><span style=color:#a6e22e>mvc</span><span style=color:#f92672>.</span><span style=color:#a6e22e>throw</span><span style=color:#f92672>-</span>exception<span style=color:#f92672>-</span><span style=color:#66d9ef>if</span><span style=color:#f92672>-</span>no<span style=color:#f92672>-</span>handler<span style=color:#f92672>-</span>found<span style=color:#f92672>=</span><span style=color:#66d9ef>true</span>
-<span style=color:#960050;background-color:#1e0010>#</span> 资源文件不配置映射
-spring<span style=color:#f92672>.</span><span style=color:#a6e22e>web</span><span style=color:#f92672>.</span><span style=color:#a6e22e>resources</span><span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>-</span>mappings<span style=color:#f92672>=</span><span style=color:#66d9ef>false</span>
-</code></pre></div><p>引入 <code>lombok</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=color:#f92672>&lt;dependency&gt;</span>
+<a href=https://sanoon.me/index.xml type=application/rss+xml title=rss target=_blank><i class=remixicon-rss-fill></i></a></div></div></div></div><div class=content><div class=post_page><div class="post animated fadeInDown"><div class="post_title post_detail_title"><h2><a href=/posts/SpringBoot%E5%A4%84%E7%90%86404%E5%BC%82%E5%B8%B8%E8%BF%94%E5%9B%9EJSON%E6%A0%BC%E5%BC%8F%E6%95%B0%E6%8D%AE/>SpringBoot 处理 404 异常返回 JSON 格式数据</a></h2><span class=date>2021.03.31</span></div><div class="post_content markdown"><p><code>Spring Boot</code> 默认对 <code>404</code> 异常处理会重定向到 /error 进行处理，现在流行前后端分离开发，后端基本上不配置静态资源，前后端交互使用 <code>XML</code> 或者 <code>JSON</code> 格式的报文，本文就以返回 <code>JSON</code> 为例，来处理 <code>404</code> 异常。</p><p>接上一节<a href=https://sanoon.me/posts/SpringBoot2%E5%88%9D%E4%BD%93%E9%AA%8C/>Spring Boot 初体验</a>，当我们访问任何不存在的接口时，会触发 <code>NoHandlerFoundException</code> 异常，我们只需要使用 <code>Spring</code> 提供的全局异常处理机制拦截该异常，并重新返回参数即可。</p><p>首先我们需要在 <code>application.properties</code> 中配置以下参数</p><pre><code># NoHandlerFound异常
+spring.mvc.throw-exception-if-no-handler-found=true
+# 资源文件不配置映射
+spring.web.resources.add-mappings=false
+</code></pre><p>引入 <code>lombok</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=color:#f92672>&lt;dependency&gt;</span>
     <span style=color:#f92672>&lt;groupId&gt;</span>org.projectlombok<span style=color:#f92672>&lt;/groupId&gt;</span>
     <span style=color:#f92672>&lt;artifactId&gt;</span>lombok<span style=color:#f92672>&lt;/artifactId&gt;</span>
     <span style=color:#f92672>&lt;optional&gt;</span>true<span style=color:#f92672>&lt;/optional&gt;</span>
 <span style=color:#f92672>&lt;/dependency&gt;</span>
-</code></pre></div><p>定义全局返回值 <code>Java Bean</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>package</span> com.lemon.boot.common<span style=color:#f92672>;</span>
+</code></pre></div><p>定义全局返回值 <code>Java Bean</code></p><pre><code>package com.lemon.boot.common;
 
-<span style=color:#f92672>import</span> lombok.Getter<span style=color:#f92672>;</span>
-<span style=color:#f92672>import</span> lombok.Setter<span style=color:#f92672>;</span>
+import lombok.Getter;
+import lombok.Setter;
 
-<span style=color:#a6e22e>@Getter</span>
-<span style=color:#a6e22e>@Setter</span>
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ApiResult</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>int</span> code<span style=color:#f92672>;</span>
-    <span style=color:#66d9ef>private</span> String msg<span style=color:#f92672>;</span>
-    <span style=color:#66d9ef>private</span> Object data<span style=color:#f92672>;</span>
+@Getter
+@Setter
+public class ApiResult {
+    private int code;
+    private String msg;
+    private Object data;
 
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>ApiResult</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> code<span style=color:#f92672>,</span> String msg<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>code</span> <span style=color:#f92672>=</span> code<span style=color:#f92672>;</span>
-        <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>msg</span> <span style=color:#f92672>=</span> msg<span style=color:#f92672>;</span>
-    <span style=color:#f92672>}</span>
+    public ApiResult(int code, String msg) {
+        this.code = code;
+        this.msg = msg;
+    }
 
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>ApiResult</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> code<span style=color:#f92672>,</span> String msg<span style=color:#f92672>,</span> Object data<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-        <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>code</span> <span style=color:#f92672>=</span> code<span style=color:#f92672>;</span>
-        <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>msg</span> <span style=color:#f92672>=</span> msg<span style=color:#f92672>;</span>
-        <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>data</span> <span style=color:#f92672>=</span> data<span style=color:#f92672>;</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>定义全局异常处理类</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>package</span> com.lemon.boot.common<span style=color:#f92672>;</span>
+    public ApiResult(int code, String msg, Object data) {
+        this.code = code;
+        this.msg = msg;
+        this.data = data;
+    }
+}
+</code></pre><p>定义全局异常处理类</p><pre><code>package com.lemon.boot.common;
 
-<span style=color:#f92672>import</span> org.slf4j.Logger<span style=color:#f92672>;</span>
-<span style=color:#f92672>import</span> org.slf4j.LoggerFactory<span style=color:#f92672>;</span>
-<span style=color:#f92672>import</span> org.springframework.web.bind.annotation.ControllerAdvice<span style=color:#f92672>;</span>
-<span style=color:#f92672>import</span> org.springframework.web.bind.annotation.ExceptionHandler<span style=color:#f92672>;</span>
-<span style=color:#f92672>import</span> org.springframework.web.bind.annotation.ResponseBody<span style=color:#f92672>;</span>
-<span style=color:#f92672>import</span> org.springframework.web.servlet.NoHandlerFoundException<span style=color:#f92672>;</span>
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
-<span style=color:#a6e22e>@ResponseBody</span>
-<span style=color:#a6e22e>@ControllerAdvice</span>
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>BootException</span> <span style=color:#f92672>{</span>
+@ResponseBody
+@ControllerAdvice
+public class BootException {
 
-    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>final</span> Logger LOGGER <span style=color:#f92672>=</span> LoggerFactory<span style=color:#f92672>.</span><span style=color:#a6e22e>getLogger</span><span style=color:#f92672>(</span>BootException<span style=color:#f92672>.</span><span style=color:#a6e22e>class</span><span style=color:#f92672>);</span>
+    private static final Logger LOGGER = LoggerFactory.getLogger(BootException.class);
 
-    <span style=color:#a6e22e>@ExceptionHandler</span><span style=color:#f92672>(</span>NoHandlerFoundException<span style=color:#f92672>.</span><span style=color:#a6e22e>class</span><span style=color:#f92672>)</span>
-    <span style=color:#66d9ef>public</span> ApiResult <span style=color:#a6e22e>handleNotFoundException</span><span style=color:#f92672>(</span>NoHandlerFoundException e<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-        LOGGER<span style=color:#f92672>.</span><span style=color:#a6e22e>error</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;{}.&#34;</span><span style=color:#f92672>,</span> e<span style=color:#f92672>.</span><span style=color:#a6e22e>getMessage</span><span style=color:#f92672>());</span>
-        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> ApiResult<span style=color:#f92672>(</span>404<span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;Not Found&#34;</span><span style=color:#f92672>,</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>);</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>然后我们重新启动工程，再次访问不存在的接口时，可以看到现在返回的就是 404 的JSON格式消息。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{<span style=color:#f92672>&#34;code&#34;</span>:<span style=color:#ae81ff>404</span>,<span style=color:#f92672>&#34;msg&#34;</span>:<span style=color:#e6db74>&#34;Not Found&#34;</span>}
+    @ExceptionHandler(NoHandlerFoundException.class)
+    public ApiResult handleNotFoundException(NoHandlerFoundException e) {
+        LOGGER.error(&quot;{}.&quot;, e.getMessage());
+        return new ApiResult(404, &quot;Not Found&quot;, null);
+    }
+}
+</code></pre><p>然后我们重新启动工程，再次访问不存在的接口时，可以看到现在返回的就是 404 的JSON格式消息。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{<span style=color:#f92672>&#34;code&#34;</span>:<span style=color:#ae81ff>404</span>,<span style=color:#f92672>&#34;msg&#34;</span>:<span style=color:#e6db74>&#34;Not Found&#34;</span>}
 </code></pre></div></div><div class=post_footer><div class=meta><div class=info><span class="field tags"><i class=remixicon-stack-line></i>
 <a href=https://sanoon.me/tags/Spring-Boot/>Spring Boot</a></span></div></div></div><div class=preAndNext style=margin-top:20px><span><font color=red>Prev: </font><a class=previous href=https://sanoon.me/posts/SpringBoot2%E5%88%9D%E4%BD%93%E9%AA%8C/>Spring Boot 2 初体验</a></span></div><script async src=https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js></script><ins class=adsbygoogle style=display:block data-ad-client=ca-pub-6765261154701378 data-ad-slot=8034548941 data-ad-format=auto data-full-width-responsive=true></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({})</script></div><div class=doc_comments><div class=comments_block_title>发表评论</div><div id=vcomments></div></div><link rel=stylesheet href=https://sanoon.me/css/comments.css><script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script><script src=//unpkg.com/valine/dist/Valine.min.js></script><script type=text/javascript>new Valine({el:'#vcomments',appId:'OLqTxeg1gvrPJ1ACgxP00SRd-MdYXbMMI',appKey:'64y2gAzoOfgjrFS083wLDKsA',placeholder:' ',visitor:'true'})</script><img alt=今日诗词 src=https://v2.jinrishici.com/one.svg style="max-width:100%;display:block;margin:0 auto;padding-bottom:30px"></div></div><a id=back_to_top href=# class=back_to_top><span>△</span></a></div><footer class=footer><div class=powered_by><a href=https://zeuk.me>Designed by Zeuk,</a>
 <a href=http://www.gohugo.io/>Proudly published with Hugo</a></div><div class=footer_slogan><span>Copyright @ 2019 - 2021. Sanoon, Inc.</span>
