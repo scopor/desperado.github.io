@@ -6,7 +6,7 @@
 <a href="https://music.163.com/#/my/m/music/playlist?id=97552201" title=music target=_blank><i class=remixicon-music-fill></i></a>
 <a href=https://twitter.com/DesperadoYan title=twitter target=_blank><i class=remixicon-twitter-fill></i></a>
 <a href=https://sanoon.me/index.xml type=application/rss+xml title=rss target=_blank><i class=remixicon-rss-fill></i></a></div></div></div></div><div class=content><div class=post_page><div class="post animated fadeInDown"><div class="post_title post_detail_title"><h2><a href=/posts/%E5%A6%82%E4%BD%95%E6%9D%80%E6%8E%89Windows%E4%B8%8B%E5%8D%A0%E7%94%A8%E6%9F%90%E7%AB%AF%E5%8F%A3%E7%9A%84%E8%BF%9B%E7%A8%8B/>如何杀掉 Windows 下占用某端口的进程</a></h2><span class=date>2020.12.08</span></div><div class="post_content markdown"><p>我们在 <code>Windows</code> 上开发时偶尔会遇到指定端口被进程占用的情况，可以使用下面的方法查询并杀掉该进程。</p><p>查看占用 <code>80</code> 端口的进程</p><pre><code>netstat -ano | findstr '80'
-</code></pre><p>如果查不出，说明该端口可能被其他软件作为保留端口，比如Hyper -V，可以如下命令查询</p><pre><code>netsh interface ipv4 show excludedportrange protocol=tcp
+</code></pre><p>如果查不出，说明该端口可能作为保留端口不让使用，使用如下命令查询</p><pre><code>netsh interface ipv4 show excludedportrange protocol=tcp
 </code></pre><p>观看查询结果，看你的端口是否在以下的每一行的某个范围内，如果在，恭喜你，请更换一个端口吧。</p><pre><code>协议 tcp 端口排除范围
 
 开始端口    结束端口
