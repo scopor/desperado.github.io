@@ -87,9 +87,12 @@ npm -v
 <pre><code>npm config set prefix &quot;D:\develop\nodejs\node_global&quot;
 npm config set cache &quot;D:\develop\nodejs\node_cache&quot;
 npm config set strict-sll false
-</code></pre><p>接着新增系统环境变量 <code>NODE_PATH</code> 为 <code>D:\develop\nodejs\node_global\node_modules</code>，
-用户环境变量 <code>Path</code> 中的 <code>npm</code> 路径 <code>C:\Users\xxx\AppData\Local\Yarn\Data\global</code> 为 <code>D:\develop\nodejs\node_global</code>
-在系统环境变量 <code>Path</code> 中新增 <code>D:\develop\nodejs\node_global\bin</code> 路径</p>
+</code></pre><p>接着设置环境变量</p>
+<ul>
+<li>系统环境变量 <code>NODE_PATH</code> 为 <code>D:\develop\nodejs\node_global\node_modules</code></li>
+<li>用户环境变量 <code>Path</code> 中的 <code>npm</code> 路径 <code>C:\Users\xxx\AppData\Local\Yarn\Data\global</code> 为 <code>D:\develop\nodejs\node_global</code></li>
+<li>在系统环境变量 <code>Path</code> 中新增 <code>D:\develop\nodejs\node_global\bin</code> 路径</li>
+</ul>
 <h2 id=yarn-安装及配置>yarn 安装及配置</h2>
 <p>安装好上述的 <code>npm</code> 后, 使用以下命令安装 <code>yarn</code></p>
 <pre><code>npm install yarn -g
