@@ -6,11 +6,10 @@
 <meta http-equiv=pragma content="no-cache">
 <meta http-equiv=cache-control content="no-cache">
 <meta name=author content="Sanoon">
-<meta name=description content="Hi Lemon.">
-<meta name=keywords content="Java,Go,Python,Vue">
-<link rel=canonical href=https://sanoon.me/tags/Yarn/>
-<link rel=alternate type=application/rss+xml href=https://sanoon.me/tags/Yarn/index.xml>
-<title>Yarn | Sanoon</title>
+<meta name=description content="许久未使用 `Windows`，配置前端开发所需的 `npm` 和 `yarn` 时，遇到了各种错误，解决完毕后梳理成文，记录在此。">
+<meta name=keywords content="node、npm、yarn安装配置">
+<link rel=canonical href=https://sanoon.me/posts/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE-Windows%E7%AF%87/>
+<title>前端开发环境配置-Windows篇 | Sanoon</title>
 <link rel="shortcut icon" href=https://sanoon.me/images/favicon.ico>
 <link rel=stylesheet href=https://sanoon.me/css/animate.min.css>
 <link rel=stylesheet href=https://sanoon.me/css/remixicon.css>
@@ -72,27 +71,73 @@
 </div>
 </div>
 <div class=content>
-<div class=list_with_title>
-<div class=listing_title>2021</div>
-<div class=listing>
-<div class=listing_item>
-<div class=listing_post>
-<a href=/posts/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE-Windows%E7%AF%87/>前端开发环境配置-Windows篇</a>
-<div class=post_time><span class=date>09-02</span></div>
+<div class=post_page>
+<div class="post animated fadeInDown">
+<div class="post_title post_detail_title">
+<h2><a href=/posts/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE-Windows%E7%AF%87/>前端开发环境配置-Windows篇</a></h2>
+<span class=date>2021.09.02</span>
+</div>
+<div class="post_content markdown"><p>许久未使用 <code>Windows</code>，配置前端开发所需的 <code>npm</code> 和 <code>yarn</code> 时，遇到了各种错误，解决完毕后梳理成文，记录在此。</p>
+<h2 id=nodenpm-安装及配置>node、npm 安装及配置</h2>
+<p>首先，打开 nodejs 官网 <code>https://nodejs.org/en/download/</code>，下载安装软件 <code>.msi</code> 格式。
+然后安装一路 Next 下去即可，安装目录自行选择。安装完成后可使用命令查看版本信息。</p>
+<pre><code>node -v
+npm -v
+</code></pre><p>然后设置 node 安装软件的全局安装目录和缓存目录</p>
+<pre><code>npm config set prefix &quot;D:\develop\nodejs\node_global&quot;
+npm config set cache &quot;D:\develop\nodejs\node_cache&quot;
+npm config set strict-sll false
+</code></pre><p>接着新增系统环境变量 <code>NODE_PATH</code> 为 <code>D:\develop\nodejs\node_global\node_modules</code>，
+用户环境变量 <code>Path</code> 中的 <code>npm</code> 路径 <code>C:\Users\xxx\AppData\Local\Yarn\Data\global</code> 为 <code>D:\develop\nodejs\node_global</code>
+在系统环境变量 <code>Path</code> 中新增 <code>D:\develop\nodejs\node_global\bin</code> 路径</p>
+<h2 id=yarn-安装及配置>yarn 安装及配置</h2>
+<p>安装好上述的 <code>npm</code> 后, 使用以下命令安装 <code>yarn</code></p>
+<pre><code>npm install yarn -g
+</code></pre><p>安装完成后，可查看 <code>yarn</code> 版本</p>
+<pre><code>yarn -v
+</code></pre><p>接着我们需要同步配置 <code>yarn</code> 安装软件的全局安装目录和缓存目录</p>
+<pre><code>yarn config set global-folder &quot;D:\\develop\\yarn\\global&quot;
+yarn config set cache-folder &quot;D:\\develop\\yarn\\node&quot;
+yarn config set strict-ssl false
+</code></pre><p>如果本地网络受限，需要针对 <code>npm</code> 和 <code>yarn</code> 设置代理，使用以下命令</p>
+<pre><code>npm config set no-proxy 不走代理的域名
+npm config set proxy 代理url
+npm config set https-proxy 代理url
+
+yarn config set no-proxy 不走代理的域名
+yarn config set proxy 代理url
+yarn config set https-proxy 代理url
+</code></pre><p>至此，前端开发环境所需要的 <code>node</code>, <code>npm</code>, <code>yarn</code> 配置完成。</p>
+</div>
+<div class=post_footer>
+<div class=meta>
+<div class=info>
+<span class="field tags">
+<i class=remixicon-stack-line></i>
+<a href=https://sanoon.me/tags/node/>node</a>
+<a href=https://sanoon.me/tags/npm/>npm</a>
+<a href=https://sanoon.me/tags/yarn/>yarn</a>
+</span>
 </div>
 </div>
 </div>
-<div class=listing_title>2020</div>
-<div class=listing>
-<div class=listing_item>
-<div class=listing_post>
-<a href=/posts/Yarn%E9%85%8D%E7%BD%AE/>Yarn 配置</a>
-<div class=post_time><span class=date>03-19</span></div>
+<div class=preAndNext style=margin-top:20px>
+<span><font color=red>Prev: </font><a class=previous href=https://sanoon.me/whisper/%E7%A7%A6%E5%B2%AD%E8%8D%89%E7%94%B8/>秦岭草甸</a></span>
 </div>
+<script async src=https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js></script>
+<ins class=adsbygoogle style=display:block data-ad-client=ca-pub-6765261154701378 data-ad-slot=8034548941 data-ad-format=auto data-full-width-responsive=true></ins>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
 </div>
+<div class=doc_comments>
+<div class=comments_block_title>发表评论</div>
+<div id=vcomments></div>
 </div>
+<link rel=stylesheet href=https://sanoon.me/css/comments.css>
+<script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script>
+<script src=//unpkg.com/valine/dist/Valine.min.js></script>
+<script type=text/javascript>new Valine({el:'#vcomments',appId:'OLqTxeg1gvrPJ1ACgxP00SRd-MdYXbMMI',appKey:'64y2gAzoOfgjrFS083wLDKsA',placeholder:' ',visitor:'true'})</script>
+<img alt=今日诗词 src=https://v2.jinrishici.com/one.svg style="max-width:100%;display:block;margin:0 auto;padding-bottom:30px">
 </div>
-<div class=pagination></div>
 </div>
 <a id=back_to_top href=# class=back_to_top><span>△</span></a>
 </div>
