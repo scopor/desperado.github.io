@@ -79,13 +79,13 @@
 </div>
 <div class="post_content markdown"><h3 id=安装-jdk>安装 jdk</h3>
 <h4 id=下载安装-jdk>下载安装 jdk</h4>
-<pre><code>cd /data
+<pre tabindex=0><code>cd /data
 wget --no-cookies --no-check-certificate --header &quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie&quot; &quot;http://download.oracle.com/otn-pub/java/jdk/8u141-b15/336fa29ff2bb4ef291e347e091f7f4a7/jdk-8u141-linux-x64.tar.gz&quot;
 tar -zxvf jdk-8u141-linux-x64.tar.gz
 mv jdk1.8.0_141/ jdk
 </code></pre><h4 id=设置环境变量>设置环境变量</h4>
 <p>vi 编辑 /etc/profile，写入以下信息并 :wq! 保存，执行 source /etc/profile 命令，使其生效，执行 java -version 查看是否配置成功</p>
-<pre><code>JAVA_HOME=/data/jdk
+<pre tabindex=0><code>JAVA_HOME=/data/jdk
 JRE_HOME=/data/jdk/jre
 CLASS_PATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib
 PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
@@ -93,7 +93,7 @@ export JAVA_HOME JRE_HOME CLASS_PATH PATH
 </code></pre><hr>
 <h3 id=搭建-zookeeper-集群>搭建 zookeeper 集群</h3>
 <h4 id=下载安装-zookeeper>下载安装 zookeeper</h4>
-<pre><code>cd data
+<pre tabindex=0><code>cd data
 wget http://mirrors.hust.edu.cn/apache/zookeeper/zookeeper-3.4.11/zookeeper-3.4.11.tar.gz
 tar -zxvf zookeeper-3.4.11.tar.gz
 mv zookeeper-3.4.11 zk1
@@ -102,7 +102,7 @@ mv zk1 zookeeper
 cd zookeeper/zk1
 mkdir zkdata zkdatalog
 </code></pre><h4 id=配置-zookeeper编辑zk1confzoocfg写入以下内容退出保存>配置 zookeeper，编辑zk1/conf/zoo.cfg，写入以下内容，退出保存</h4>
-<pre><code>tickTime=2000
+<pre tabindex=0><code>tickTime=2000
 initLimit=10
 syncLimit=5
 dataDir=/data/zookeeper/zk1/zkdata
@@ -113,13 +113,13 @@ server.1=192.168.1.134:12888:13888
 server.2=192.168.1.134:22888:23888
 server.3=192.168.1.134:32888:33888
 </code></pre><h4 id=配置-myid>配置 myid</h4>
-<pre><code>cd zkdata
+<pre tabindex=0><code>cd zkdata
 echo &quot;1&quot; &gt; myid
 </code></pre><h3 id=zk2-和-zk3-节点配置>zk2 和 zk3 节点配置</h3>
 <h4 id=复制-zk1-为-zk2-和-zk3>复制 zk1 为 zk2 和 zk3</h4>
-<pre><code>cp -rf zk1 zk2 zk3
+<pre tabindex=0><code>cp -rf zk1 zk2 zk3
 </code></pre><h4 id=zk2confzoocfg-配置配置如下>zk2/conf/zoo.cfg 配置配置如下：</h4>
-<pre><code>tickTime=2000
+<pre tabindex=0><code>tickTime=2000
 initLimit=10
 syncLimit=5
 dataDir=/data/zookeeper/zk2/zkdata
@@ -130,9 +130,9 @@ server.1=192.168.1.134:12888:13888
 server.2=192.168.1.134:22888:23888
 server.3=192.168.1.134:32888:33888
 </code></pre><h4 id=zk2zkdatamyid-配置如下>zk2/zkdata/myid 配置如下：</h4>
-<pre><code>2
+<pre tabindex=0><code>2
 </code></pre><h4 id=zk3confzoocfg-配置配置如下>zk3/conf/zoo.cfg 配置配置如下：</h4>
-<pre><code>tickTime=2000
+<pre tabindex=0><code>tickTime=2000
 initLimit=10
 syncLimit=5
 dataDir=/data/zookeeper/zk3/zkdata
@@ -143,9 +143,9 @@ server.1=192.168.1.134:12888:13888
 server.2=192.168.1.134:22888:23888
 server.3=192.168.1.134:32888:33888
 </code></pre><h4 id=zk3zkdatamyid-配置如下>zk3/zkdata/myid 配置如下：</h4>
-<pre><code>3
+<pre tabindex=0><code>3
 </code></pre><h4 id=启动-zookeeper-集群>启动 zookeeper 集群</h4>
-<pre><code>cd /data/zookeeper/zk1/bin/
+<pre tabindex=0><code>cd /data/zookeeper/zk1/bin/
 ./zkServer.sh start
 
 cd /data/zookeeper/zk2/bin/
@@ -154,7 +154,7 @@ cd /data/zookeeper/zk2/bin/
 cd /data/zookeeper/zk2/bin/
 ./zkServer.sh start
 </code></pre><h4 id=查看-zookeeper-节点状态>查看 zookeeper 节点状态</h4>
-<pre><code>cd /data/zookeeper/zk1/bin/
+<pre tabindex=0><code>cd /data/zookeeper/zk1/bin/
 ./zkServer.sh status
 
 cd /data/zookeeper/zk2/bin/
@@ -165,7 +165,7 @@ cd /data/zookeeper/zk2/bin/
 </code></pre><hr>
 <h3 id=搭建-kafka-集群>搭建 Kafka 集群</h3>
 <h4 id=下载安装-kafka>下载安装 Kafka</h4>
-<pre><code>cd data
+<pre tabindex=0><code>cd data
 wget http://mirror.bit.edu.cn/apache/kafka/0.11.0.2/kafka_2.11-0.11.0.2.tgz
 tar -zxvf kafka_2.11-0.11.0.2.tgz
 mv kafka_2.11-0.11.0.2 k1
@@ -175,7 +175,7 @@ cd kafka/k1
 mkdir kafkaLogs
 </code></pre><h4 id=配置-kafka>配置 Kafka</h4>
 <p>k1/config/server.properties配置如下：</p>
-<pre><code>broker.id=0
+<pre tabindex=0><code>broker.id=0
 port=19092
 num.network.threads=3
 num.io.threads=8
@@ -198,7 +198,7 @@ zookeeper.connect=192.168.1.134:12181,192.168.1.134:21281,192.168.1.134:31281
 zookeeper.connection.timeout.ms=6000
 group.initial.rebalance.delay.ms=0
 </code></pre><p>k2/config/server.properties配置如下：</p>
-<pre><code>broker.id=1
+<pre tabindex=0><code>broker.id=1
 port=29092
 num.network.threads=3
 num.io.threads=8
@@ -221,7 +221,7 @@ zookeeper.connect=192.168.1.134:12181,192.168.1.134:21281,192.168.1.134:31281
 zookeeper.connection.timeout.ms=6000
 group.initial.rebalance.delay.ms=0
 </code></pre><p>k3/config/server.properties配置如下：</p>
-<pre><code>broker.id=2
+<pre tabindex=0><code>broker.id=2
 port=39092
 num.network.threads=3
 num.io.threads=8
@@ -244,7 +244,7 @@ zookeeper.connect=192.168.1.134:12181,192.168.1.134:21281,192.168.1.134:31281
 zookeeper.connection.timeout.ms=6000
 group.initial.rebalance.delay.ms=0
 </code></pre><h4 id=启动-kafka-集群>启动 Kafka 集群</h4>
-<pre><code>cd /data/kafka/k1/bin
+<pre tabindex=0><code>cd /data/kafka/k1/bin
 ./kafka-server-start.sh -daemon ../config/server.properties &amp;
 
 cd /data/kafka/k2/bin

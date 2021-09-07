@@ -79,7 +79,7 @@
 </div>
 <div class="post_content markdown"><p>工厂方法模式(<code>Factory Method Pattern</code>)，又叫做多态工厂模式(<code>Polymorphic Factory</code>)，和简单工厂的区别在于，可以在不用修改工厂类的情况下完成新品的增加，更加符合 开闭原则。工厂父类负责定义创建产品的接口，工厂子类负责生成具体的产品，我们来模拟一下不同文具的生产过程。</p>
 <p>首先我们来定义一个产品制造商，产品制造商负责生产产品</p>
-<pre><code>/**
+<pre tabindex=0><code>/**
  * 产品制造商
  */
 public interface Manufacturer {
@@ -89,7 +89,7 @@ public interface Manufacturer {
     void create();
 }
 </code></pre><p>其次我们定义一个产品制造工厂，该工厂类定义了一个具体工厂必须实现的接口</p>
-<pre><code>/**
+<pre tabindex=0><code>/**
  * 工厂
  */
 public interface Factory {
@@ -100,7 +100,7 @@ public interface Factory {
     Manufacturer getManufacturer();
 }
 </code></pre><p>接着我们针对不同的文具，定义不同的制造商</p>
-<pre><code>/**
+<pre tabindex=0><code>/**
  * 产品：笔
  */
 public class PenManufacturer implements Manufacturer {
@@ -109,7 +109,7 @@ public class PenManufacturer implements Manufacturer {
         System.out.println(&quot;Product pens.&quot;);
     }
 }
-</code></pre><pre><code>/**
+</code></pre><pre tabindex=0><code>/**
  * 产品：笔记本
  */
 public class NotebookManufacturer implements Manufacturer {
@@ -119,7 +119,7 @@ public class NotebookManufacturer implements Manufacturer {
     }
 }
 </code></pre><p>然后我们定义不同的产品生产工厂类</p>
-<pre><code>/**
+<pre tabindex=0><code>/**
  * 生产笔的工厂
  */
 public class PenFactory implements Factory {
@@ -128,7 +128,7 @@ public class PenFactory implements Factory {
         return new PenManufacturer();
     }
 }
-</code></pre><pre><code>/**
+</code></pre><pre tabindex=0><code>/**
  * 生产笔记本的工厂
  */
 public class NoteBookFactory implements Factory {
@@ -138,7 +138,7 @@ public class NoteBookFactory implements Factory {
     }
 }
 </code></pre><p>最后我们来观看一下文具的成产过程</p>
-<pre><code>/**
+<pre tabindex=0><code>/**
  * 客户端
  */
 public class Client {

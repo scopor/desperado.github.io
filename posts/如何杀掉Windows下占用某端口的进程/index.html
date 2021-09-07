@@ -79,11 +79,11 @@
 </div>
 <div class="post_content markdown"><p>我们在 <code>Windows</code> 上开发时偶尔会遇到指定端口被进程占用的情况，可以使用下面的方法查询并杀掉该进程。</p>
 <p>查看占用 <code>80</code> 端口的进程</p>
-<pre><code>netstat -ano | findstr '80'
+<pre tabindex=0><code>netstat -ano | findstr '80'
 </code></pre><p>如果查不出，说明该端口可能作为保留端口不让使用，使用如下命令查询</p>
-<pre><code>netsh interface ipv4 show excludedportrange protocol=tcp
+<pre tabindex=0><code>netsh interface ipv4 show excludedportrange protocol=tcp
 </code></pre><p>观看查询结果，看你的端口是否在以下的每一行的某个范围内，如果在，恭喜你，请更换一个端口吧。</p>
-<pre><code>协议 tcp 端口排除范围
+<pre tabindex=0><code>协议 tcp 端口排除范围
 
 开始端口    结束端口
 ----------    --------
@@ -93,9 +93,9 @@
 
 * - 管理的端口排除。
 </code></pre><p>注意分辨，可能占用 <code>8080</code> 端口的进程也被查询出来了，确认找到你要杀掉的<code>进程号</code>，执行以下命令</p>
-<pre><code>taskkill -PID 进程号 -F
+<pre tabindex=0><code>taskkill -PID 进程号 -F
 </code></pre><p>如果你习惯使用 <code>Git Bash</code>, 那么可以使用下面的命令一键查杀</p>
-<pre><code>netstat -ano | awk '{print $5,$2}' | grep ':80$' | awk '{print $1}' | xargs tskill
+<pre tabindex=0><code>netstat -ano | awk '{print $5,$2}' | grep ':80$' | awk '{print $1}' | xargs tskill
 </code></pre></div>
 <div class=post_footer>
 <div class=meta>

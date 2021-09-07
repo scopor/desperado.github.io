@@ -80,7 +80,7 @@
 <div class="post_content markdown"><p><code>Spring Boot</code> 默认对 <code>404</code> 异常处理会重定向到 /error 进行处理，现在流行前后端分离开发，后端基本上不配置静态资源，前后端交互使用 <code>XML</code> 或者 <code>JSON</code> 格式的报文，本文就以返回 <code>JSON</code> 为例，来处理 <code>404</code> 异常。</p>
 <p>接上一节<a href=https://sanoon.me/posts/SpringBoot2%E5%88%9D%E4%BD%93%E9%AA%8C/>Spring Boot 初体验</a>，当我们访问任何不存在的接口时，会触发 <code>NoHandlerFoundException</code> 异常，我们只需要使用 <code>Spring</code> 提供的全局异常处理机制拦截该异常，并重新返回参数即可。</p>
 <p>首先我们需要在 <code>application.properties</code> 中配置以下参数</p>
-<pre><code># NoHandlerFound异常
+<pre tabindex=0><code># NoHandlerFound异常
 spring.mvc.throw-exception-if-no-handler-found=true
 # 资源文件不配置映射
 spring.web.resources.add-mappings=false
@@ -91,7 +91,7 @@ spring.web.resources.add-mappings=false
     <span style=color:#f92672>&lt;optional&gt;</span>true<span style=color:#f92672>&lt;/optional&gt;</span>
 <span style=color:#f92672>&lt;/dependency&gt;</span>
 </code></pre></div><p>定义全局返回值 <code>Java Bean</code></p>
-<pre><code>package com.lemon.boot.common;
+<pre tabindex=0><code>package com.lemon.boot.common;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -115,7 +115,7 @@ public class ApiResult {
     }
 }
 </code></pre><p>定义全局异常处理类</p>
-<pre><code>package com.lemon.boot.common;
+<pre tabindex=0><code>package com.lemon.boot.common;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

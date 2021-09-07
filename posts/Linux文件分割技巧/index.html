@@ -85,17 +85,17 @@
 <ul>
 <li>按行分割, 设置文件前缀 prefix 和后缀 suffix</li>
 </ul>
-<pre><code>split -l 5000 data.txt new_data_file_prefix --additinal-suffix=.sql
+<pre tabindex=0><code>split -l 5000 data.txt new_data_file_prefix --additinal-suffix=.sql
 </code></pre><ul>
 <li>按尺寸分割, 设置文件前缀 prefix 和后缀 suffix</li>
 </ul>
-<pre><code>split -b 1M data.txt new_data_file_prefix --additinal-suffix=.sql
+<pre tabindex=0><code>split -b 1M data.txt new_data_file_prefix --additinal-suffix=.sql
 </code></pre><p>按照这两种方式，虽然可以分割，但是对于 <code>SQL</code> 这种语句分割可能不好计算行数，亦或者按照尺寸分割，需要对新文件的首行重新添加 <code>INSERT INTO</code> 行，显然这不是我要的效果，搜索发现高级版分割命令 <code>csplit</code>。</p>
 <h3 id=linux-csplit-命令><code>Linux</code> <code>csplit</code> 命令</h3>
 <blockquote>
 <p><code>csplit</code> 命令是 <code>split</code> 命令的变体，支持按照文件本身的特点来分割，最常用的莫过于按照指定的字符来分割，比如我的脚本每 <code>5000</code> 行就重新插入了 <code>INSERT INTO</code> 标记，那么此时使用该标记来分割文件再好不过了。执行之后就会看到新生成的 <code>new_data_file_prefix000*.sql</code> 文件了。</p>
 </blockquote>
-<pre><code>csplit -f new_data_file_prefix -b %04d.sql data.txt /INSERT/ {*}
+<pre tabindex=0><code>csplit -f new_data_file_prefix -b %04d.sql data.txt /INSERT/ {*}
 </code></pre></div>
 <div class=post_footer>
 <div class=meta>

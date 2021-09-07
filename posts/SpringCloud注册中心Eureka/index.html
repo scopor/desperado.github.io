@@ -81,7 +81,7 @@
 Eureka 将数据完全存储于内存中，对于注册的服务本身，需要维持心跳。<br>
 下面我们将基于 <code>Spring Cloud ：Hoxton.SR3；SpringBoot ：2.2.5.RELEASE</code> 版本分别介绍 Eureka 注册中心的独立模式和集群模式。</p>
 <p>首先看一下我们的项目结构：详见 <a href=https://github.com/scopor/spring-cloud-examples>spring-cloud-examples</a></p>
-<pre><code>spring-cloud-exampls  
+<pre tabindex=0><code>spring-cloud-exampls  
 |-|-spring-cloud-eureka  
 |-|-|-pom.xml
 |-|-spring-cloud-eureka-provider  
@@ -94,7 +94,7 @@ Eureka 将数据完全存储于内存中，对于注册的服务本身，需要�
 <ul>
 <li>添加 Eureka 依赖包</li>
 </ul>
-<pre><code>&lt;dependencies&gt;
+<pre tabindex=0><code>&lt;dependencies&gt;
     &lt;dependency&gt;
         &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
         &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-server&lt;/artifactId&gt;
@@ -104,7 +104,7 @@ Eureka 将数据完全存储于内存中，对于注册的服务本身，需要�
 <ul>
 <li>编写服务启动类</li>
 </ul>
-<pre><code>@SpringBootApplication
+<pre tabindex=0><code>@SpringBootApplication
 @EnableEurekaServer
 public class EurekaApplication {
 
@@ -115,7 +115,7 @@ public class EurekaApplication {
 </code></pre><ul>
 <li>配置注册中心 application.properties 文件</li>
 </ul>
-<pre><code># 设置端口号
+<pre tabindex=0><code># 设置端口号
 server.port=5000
 # 给当前服务取一个名字
 spring.application.name=eureka
@@ -131,7 +131,7 @@ eureka.client.serviceUrl.defaultZone=http://${eureka.instance.hostname}:${server
 </code></pre><ul>
 <li>启动服务</li>
 </ul>
-<pre><code>java -jar spring-cloud-eureka-1.0.0.jar
+<pre tabindex=0><code>java -jar spring-cloud-eureka-1.0.0.jar
 </code></pre><ul>
 <li>查看 http://localhost:5000 是否启动成功</li>
 </ul>
@@ -140,14 +140,14 @@ eureka.client.serviceUrl.defaultZone=http://${eureka.instance.hostname}:${server
 <ul>
 <li>Eureka 本身既是注册中心，也是一个独立的服务，在独立模式下需要防止对自身的注册，开启以下配置</li>
 </ul>
-<pre><code># register-with-eureka 设置为 false，表示当前项目不要注册到注册中心上  
+<pre tabindex=0><code># register-with-eureka 设置为 false，表示当前项目不要注册到注册中心上  
 eureka.client.register-with-eureka=false  
 # 表示是否从 Eureka Server 上获取注册信息  
 eureka.client.fetch-registry=false  
 </code></pre><ul>
 <li>独立模式启动后，需要保证以下 hostname 配置一致，防止节点 hostname 不一导致管理节点不可用，出现在 unavailable-replicas</li>
 </ul>
-<pre><code># 实例名称
+<pre tabindex=0><code># 实例名称
 eureka.instance.hostname=one
 eureka.client.serviceUrl.defaultZone=http://${eureka.instance.hostname}:${server.port}/eureka/
 </code></pre><p>另外 hostname 需要配置 hosts 文件中，此处自行配置，不再赘述。</p>
@@ -156,14 +156,14 @@ eureka.client.serviceUrl.defaultZone=http://${eureka.instance.hostname}:${server
 <li>集群配置文件<br>
 集群模式，不需要改变启动类，只需要修改配置文件。本文在原 application.properties 的基础上新增修改以下三个文件.</li>
 </ul>
-<pre><code>application-one.properties
+<pre tabindex=0><code>application-one.properties
 application-three.properties
 application-two.properties
 </code></pre><p><code>注</code>: 此处文件命名遵循 application-xxx.properties 格式</p>
 <ul>
 <li>application-one.properties ，其他两个大同小异，换掉 profiles、hostname 及 defaultZone</li>
 </ul>
-<pre><code>spring.profiles=one
+<pre tabindex=0><code>spring.profiles=one
 # 设置端口号
 server.port=5001
 # 给当前服务取一个名字
@@ -181,7 +181,7 @@ eureka.client.serviceUrl.defaultZone=http://two:5002/eureka/,http://three:5003/e
 <ul>
 <li>分别启动三个节点</li>
 </ul>
-<pre><code>java -jar spring-cloud-eureka-1.0.0.jar --spring.profiles.active=one
+<pre tabindex=0><code>java -jar spring-cloud-eureka-1.0.0.jar --spring.profiles.active=one
 java -jar spring-cloud-eureka-1.0.0.jar --spring.profiles.active=two
 java -jar spring-cloud-eureka-1.0.0.jar --spring.profiles.active=three
 </code></pre><ul>
@@ -195,7 +195,7 @@ java -jar spring-cloud-eureka-1.0.0.jar --spring.profiles.active=three
 <p><img src=https://cdn.jsdelivr.net/gh/scopor/cdn@1.0.6/20200320225244.png alt=集群剩余节点></p>
 <h2 id=排坑-1>排坑</h2>
 <p>集群模式下，需要将每个节点也注册到注册中心去</p>
-<pre><code># register-with-eureka 设置为 false，表示当前项目不要注册到注册中心上, 集群时设置为true
+<pre tabindex=0><code># register-with-eureka 设置为 false，表示当前项目不要注册到注册中心上, 集群时设置为true
 eureka.client.register-with-eureka=true
 # 表示是否从 Eureka Server 上获取注册信息
 eureka.client.fetch-registry=true

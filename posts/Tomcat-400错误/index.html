@@ -79,7 +79,7 @@
 </div>
 <div class="post_content markdown"><p>近期在调试一个接口时，通过 <code>Insomnia</code> 访问一切正常，在另外一个服务中访问该接口时，返回 <code>400</code> 错误，在这里记录下。</p>
 <p>接口返回的错误信息，如下描述</p>
-<pre><code>The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).  
+<pre tabindex=0><code>The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).  
 </code></pre><p>经排查，我方微服务之间的接口调用返回的都是 <code>JSON</code> 格式的数据，看到上述错误，基本可以确定是容器捣的鬼。后经过抓包比对微服务调用和 <code>Insomnia</code> 调用的区别发现，微服务调用时传递了两次 <code>Content-Type</code> ，将同样的 <code>Header</code> 信息在 <code>Insomnia</code> 中尝试请求，返回了上述异常。</p>
 </div>
 <div class=post_footer>

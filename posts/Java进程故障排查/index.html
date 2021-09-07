@@ -81,37 +81,37 @@
 <ul>
 <li>查询进程号</li>
 </ul>
-<pre><code>ps -ef | grep 服务名
+<pre tabindex=0><code>ps -ef | grep 服务名
 </code></pre><ul>
 <li>查看 <code>gc</code> 情况</li>
 </ul>
-<pre><code>jstat -gcutil pid 1000 10
+<pre tabindex=0><code>jstat -gcutil pid 1000 10
 </code></pre><ul>
 <li>查询占用 <code>cpu</code> 最高的线程号</li>
 </ul>
-<pre><code>top -Hp pid
+<pre tabindex=0><code>top -Hp pid
 按大写的 P 键
 </code></pre><ul>
 <li>查询占用内存最高的线程号</li>
 </ul>
-<pre><code>top -Hp pid
+<pre tabindex=0><code>top -Hp pid
 按大写的 M 键
 </code></pre><ul>
 <li>打印查询到的线程号的 16 进制 <code>nid</code></li>
 </ul>
-<pre><code>printf '%x\n' tid
+<pre tabindex=0><code>printf '%x\n' tid
 </code></pre><ul>
 <li>查看该线程的具体执行信息</li>
 </ul>
-<pre><code>jstack pid | grep -A 50 nid
+<pre tabindex=0><code>jstack pid | grep -A 50 nid
 </code></pre><ul>
 <li>当然，更常见的情形是直接将整个进程的线程信息打印出来</li>
 </ul>
-<pre><code>jstack pid
+<pre tabindex=0><code>jstack pid
 </code></pre><ul>
 <li>查看每种状态的统计情况，重点关注 <code>WAITING</code>, <code>TIMED_WAITING</code> 和 <code>BLOCKED</code></li>
 </ul>
-<pre><code>grep 'java.lang.Thread.State' jstack.log | sort -nr | uniq -c
+<pre tabindex=0><code>grep 'java.lang.Thread.State' jstack.log | sort -nr | uniq -c
 </code></pre></div>
 <div class=post_footer>
 <div class=meta>

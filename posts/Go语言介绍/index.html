@@ -97,7 +97,7 @@
 </ul>
 <p>Go 语言还提供了延迟处理机制，使用关键字 defer 制定逻辑的善后处理，在语言描述上更自然，增强可读性。</p>
 <p>Go 在语言级别自带 HTTP/TCP/UDP 高性能的服务器，基于协程并发，简单的几行代码就可以完成一个高性能的 Web 服务，维护成本低，没有任何依赖。</p>
-<pre><code>func main() {
+<pre tabindex=0><code>func main() {
   http.HandleFunc(&quot;/&quot;, func(w http.ResponseWriter, r *http.Request) {
     io.WriteString(w, &quot;Hi, Lemon.&quot;)
   })

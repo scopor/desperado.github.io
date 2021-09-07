@@ -80,7 +80,7 @@
 <div class="post_content markdown"><p>上一节，我们对 <code>Flask</code> 路由做了一些介绍，理解了视图函数和路由的使用方法，接下来我们来学习路由的进阶部分：重定向、<code>URL</code> 构建</p>
 <h2 id=重定向>重定向</h2>
 <p>首先，我们来看一段代码，我们定义了两个视图函数并配置了路由信息，访问路径分别是 <code>/api</code> 和 <code>/about/</code></p>
-<pre><code>from flask import Flask
+<pre tabindex=0><code>from flask import Flask
 app = Flask(__name__)
 
 @app.route('/api')
@@ -123,7 +123,7 @@ def about(name='About'):
 </ul>
 <p>​</p>
 <p>测试案例</p>
-<pre><code>from flask import Flask, url_for
+<pre tabindex=0><code>from flask import Flask, url_for
 app = Flask(__name__)
 
 @app.route('/hello/&lt;name&gt;')
@@ -138,13 +138,13 @@ def api(name='Api'):
     print(url_for('hello', name='Lemon', param='Tree'))
     return 'Hello {}'.format(name)
 </code></pre><p>测试结果</p>
-<pre><code># print(url_for('hello')) 测试不携带 name 参数会报错，但如果视图函数本身不带参数，多传入则不会
+<pre tabindex=0><code># print(url_for('hello')) 测试不携带 name 参数会报错，但如果视图函数本身不带参数，多传入则不会
 /hello/world
 /hello/Lemon%20Tree
 /hello/Lemon?param=Tree
 </code></pre><p>​</p>
 <p>对应静态文件 <code>/static/style.css</code> 的访问，有时也会使用如下的方式</p>
-<pre><code>url_for('static', filename='style.css')
+<pre tabindex=0><code>url_for('static', filename='style.css')
 </code></pre><hr>
 <p>OK，关于重定向和 <code>URL</code> 构建，就介绍到这里。</p>
 </div>

@@ -79,7 +79,7 @@
 </div>
 <div class="post_content markdown"><p>grep 命令是 Linux 上一款强大的文本内容搜索命令，你可以使用它在给定的文件或者文件夹中，快速的查找到符合指定内容或者符合某个正则的文本内容并打印，多用于定位问题时使用。</p>
 <p>测试文件</p>
-<pre><code>$ cat demo.text
+<pre tabindex=0><code>$ cat demo.text
 大江东去，浪淘尽，千古风流人物。
 故垒西边，人道是：三国周郎赤壁。
 乱石穿空，惊涛拍岸，卷起千堆雪。
@@ -93,13 +93,13 @@
 <blockquote>
 <p>通常格式为 <code>grep '要查找的字符串' 指定要查找的文件</code>， 打印出符合要求的行内容</p>
 </blockquote>
-<pre><code>$ grep '小乔' demo.txt
+<pre tabindex=0><code>$ grep '小乔' demo.txt
 遥想公瑾当年，小乔初嫁了，雄姿英发。
 </code></pre><p>查找指定内容下面 N 行</p>
 <blockquote>
 <p><code>grep -A 2 '要查找的字符串' 指定要查找的文件</code></p>
 </blockquote>
-<pre><code>$ grep -A 2 '小乔' demo.txt
+<pre tabindex=0><code>$ grep -A 2 '小乔' demo.txt
 遥想公瑾当年，小乔初嫁了，雄姿英发。
 羽扇纶巾，谈笑间、樯橹灰飞烟灭。
 故国神游，多情应笑我，早生华发。
@@ -107,7 +107,7 @@
 <blockquote>
 <p><code>grep -C 2 '要查找的字符串' 指定要查找的文件</code></p>
 </blockquote>
-<pre><code>$ grep -C 2 '小乔' demo.txt
+<pre tabindex=0><code>$ grep -C 2 '小乔' demo.txt
 江山如画，一时多少豪杰。
 
 遥想公瑾当年，小乔初嫁了，雄姿英发。
@@ -117,7 +117,7 @@
 <blockquote>
 <p><code>grep -v '要排除的内容' 指定要查找的文件</code></p>
 </blockquote>
-<pre><code>$ grep -v '小乔' demo.txt
+<pre tabindex=0><code>$ grep -v '小乔' demo.txt
 大江东去，浪淘尽，千古风流人物。
 故垒西边，人道是：三国周郎赤壁。
 乱石穿空，惊涛拍岸，卷起千堆雪。
@@ -130,7 +130,7 @@
 <blockquote>
 <p><code>grep -E 'A|B' 指定要查找的文件</code></p>
 </blockquote>
-<pre><code>$ grep -E '小乔|周郎' demo.txt
+<pre tabindex=0><code>$ grep -E '小乔|周郎' demo.txt
 故垒西边，人道是：三国周郎赤壁。
 遥想公瑾当年，小乔初嫁了，雄姿英发。
 
@@ -147,7 +147,7 @@ $ awk '/小乔|周郎/' demo.txt
 <blockquote>
 <p><code>grep -i '要查找的字符串' 指定要查找的文件 </code></p>
 </blockquote>
-<pre><code># 测试文件 demo2.txt
+<pre tabindex=0><code># 测试文件 demo2.txt
 $ cat demo2.txt
 AbCd
 B
@@ -162,10 +162,10 @@ c
 <blockquote>
 <p><code>grep -r '要查找的字符串' 指定目录</code></p>
 </blockquote>
-<pre><code>$ grep -r '小乔' ./
+<pre tabindex=0><code>$ grep -r '小乔' ./
 ./demo.txt:遥想公瑾当年，小乔初嫁了，雄姿英发。
 </code></pre><p>其他</p>
-<pre><code># 列出含有指定内容的文件的文件名
+<pre tabindex=0><code># 列出含有指定内容的文件的文件名
 $ grep -l '小乔' demo.txt demo2.txt
 demo.txt
 

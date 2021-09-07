@@ -79,8 +79,8 @@
 </div>
 <div class="post_content markdown"><p>在日常开发中，会遇到想删除已经 push 到 git 服务器的记录，这时候该怎么办呢？ 我们可以使用以下几个命令来处理。</p>
 <h2 id=查看代码提交日志>查看代码提交日志</h2>
-<pre><code>git log
-</code></pre><pre><code>commit 7c40f734ceaf81d2595a7f6ad8bc3710db5c7ed2 (HEAD -&gt; master, origin/master)
+<pre tabindex=0><code>git log
+</code></pre><pre tabindex=0><code>commit 7c40f734ceaf81d2595a7f6ad8bc3710db5c7ed2 (HEAD -&gt; master, origin/master)
 Author: scopor &lt;scopor@163.com&gt;
 Date:   Mon Apr 13 23:43:09 2020 +0800
 
@@ -93,12 +93,12 @@ Date:   Mon Apr 13 23:33:46 2020 +0800
     add Github Actions
 
 </code></pre><h2 id=回退至上一次的提交记录>回退至上一次的提交记录</h2>
-<pre><code>git reset --hard def72b2599cac1dcdf67947b3f887574d12dc6cc
+<pre tabindex=0><code>git reset --hard def72b2599cac1dcdf67947b3f887574d12dc6cc
 </code></pre><h2 id=更新服务器代码版本>更新服务器代码版本</h2>
-<pre><code>git push origin HEAD --force 
+<pre tabindex=0><code>git push origin HEAD --force 
 </code></pre><h2 id=再次查看代码提交记录>再次查看代码提交记录</h2>
-<pre><code>git log
-</code></pre><pre><code>commit def72b2599cac1dcdf67947b3f887574d12dc6cc (HEAD -&gt; master, origin/master)
+<pre tabindex=0><code>git log
+</code></pre><pre tabindex=0><code>commit def72b2599cac1dcdf67947b3f887574d12dc6cc (HEAD -&gt; master, origin/master)
 Author: scopor &lt;scopor@163.com&gt;
 Date:   Mon Apr 13 23:33:46 2020 +0800
 

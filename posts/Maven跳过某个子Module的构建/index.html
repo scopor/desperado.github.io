@@ -78,11 +78,11 @@
 <span class=date>2020.03.18</span>
 </div>
 <div class="post_content markdown"><p>当项目中出现某个稳定的模块，不需要每次编译的时候重复去构建它，我们可以使用如下的命令去跳过它</p>
-<pre><code>mvn -pl '!父Module/子Module' clean install
+<pre tabindex=0><code>mvn -pl '!父Module/子Module' clean install
 </code></pre><p>假如你使用的是 IDEA 插件 Maven Helper，那需要去掉引号</p>
-<pre><code>mvn -pl !父Module/子Module clean install
+<pre tabindex=0><code>mvn -pl !父Module/子Module clean install
 </code></pre><p>如果有多个子 Module 需要跳过，直接逗号隔开即可</p>
-<pre><code>mvn -pl '!父Module/子Module1,!父Module/子Module2' clean install
+<pre tabindex=0><code>mvn -pl '!父Module/子Module1,!父Module/子Module2' clean install
 </code></pre><p><code>注</code>: -pl 参数需要 Maven 3.2.1 以上版本</p>
 </div>
 <div class=post_footer>

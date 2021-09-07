@@ -123,7 +123,7 @@ npm install hexo-generator-sitemap --save
 <p>编辑 Hexo 目录下的 _config.yml 文件，将 theme 的值改为 maupassant ，重新启动 hexo server 。</p>
 <h3 id=hexo-全局配置>Hexo 全局配置</h3>
 <p>查看项目结构，会发现根目录下和主题目录下分别有 _config.xml 配置文件，其中根目录下的为全局配置文件.</p>
-<pre><code>title: Sanoon                   ## 博客主标题
+<pre tabindex=0><code>title: Sanoon                   ## 博客主标题
 subtitle: 行到水穷，坐看云起       ## 博客副标题
 keywords:                       ## 关键字，可多个，逗号隔开，同时修改themes/maupassant/layout/_partial/head.jade，加上meta(name='keywords', content=config.keywords)，重启
 description:                    ## 网站描述信息
@@ -168,7 +168,7 @@ limit: 20
 theme: maupassant               ## 主题
 </code></pre><h3 id=hexo-主题配置>Hexo 主题配置</h3>
 <p>主题配置文件为 themes/maupassant 下的 _config.xml 文件。</p>
-<pre><code>fancybox: true                  ## 是否启用 Fancybox 图片灯箱效果
+<pre tabindex=0><code>fancybox: true                  ## 是否启用 Fancybox 图片灯箱效果
 disqus: sanoon                  ## Disqus 评论 shortname，本博客使用该评论插件
 gitment: fasle                  ## Gitment 评论相关参数
 
@@ -215,11 +215,11 @@ Static files:                   ## 静态文件存储路径，方便设置 CDN �
 Theme version:                  ## 主题版本，便于静态文件更新后刷新 CDN 缓存
 </code></pre><h3 id=写文章>写文章</h3>
 <p>在根目下的 source 文件夹结构如下</p>
-<pre><code>_posts                          ## 该目录为文章主目录
+<pre tabindex=0><code>_posts                          ## 该目录为文章主目录
 about                           ## 关于我的介绍，创建 index.md 文件。
 catelories                      ## 存放分类的目录
 </code></pre><p>其中每篇文章的开头需配置如下，内容写在该区域下方，语法遵循 Markdown，文件为 md 文件</p>
-<pre><code>使用 --- 进行闭合
+<pre tabindex=0><code>使用 --- 进行闭合
 ---
 title: Hexo 搭建博客             ## 文章名称
 tags:                           ## 文章标签，可多个
@@ -233,10 +233,10 @@ description:                    ## 摘要描述，文章在列表显示时候的
 ### 内容区域
 </code></pre><h3 id=设置关键字>设置关键字</h3>
 <p>在根目下添加 keywords 和 description 配置:</p>
-<pre><code>keywords: 首页的关键字
+<pre tabindex=0><code>keywords: 首页的关键字
 description: 网站描述
 </code></pre><p>在主题下面的 _partial/hdea.jad 文件中找到 keywords 和 description,替换成如下代码:</p>
-<pre><code>if page.keywords
+<pre tabindex=0><code>if page.keywords
         meta(name='keywords', content=page.keywords)
     else
         meta(name='keywords', content=config.keywords)

@@ -78,7 +78,7 @@
 <span class=date>2020.12.08</span>
 </div>
 <div class="post_content markdown"><p>我们在编写 shell 脚本时，会用到一些系统变量，诸如 <code>$1</code>, <code>$0</code>, <code>$#</code>, <code>$$</code>, <code>$!</code>, <code>$?</code> 等，我们来看一下详细解释。</p>
-<pre><code>$n	 $n 表示第几个参数，从 1 开始计数，例如 $2 表示第二个参数
+<pre tabindex=0><code>$n	 $n 表示第几个参数，从 1 开始计数，例如 $2 表示第二个参数
 $#	 命令行参数的总个数
 $0	 当前运行程序的名称
 $?	 前一个命令或函数的返回码，0 表示成功， 1 表示失败
@@ -87,7 +87,7 @@ $@	 以&quot;参数1&quot; &quot;参数2&quot; ... 形式保存所有参数，�
 $$	 本程序的(进程 ID 号) PID
 $!	 上一个命令的 PID
 </code></pre><p>对于如下脚本 <code>demo.sh</code></p>
-<pre><code>#!/bin/bash
+<pre tabindex=0><code>#!/bin/bash
 echo $#
 echo $1
 echo $0
@@ -107,7 +107,7 @@ do
     echo &quot;$var&quot;
 done
 </code></pre><p>执行 <code>./demo.sh one two</code>，结果显示</p>
-<pre><code>2
+<pre tabindex=0><code>2
 one
 ./demo.sh
 0

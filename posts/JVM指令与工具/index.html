@@ -78,27 +78,27 @@
 <span class=date>2020.03.18</span>
 </div>
 <div class="post_content markdown"><h2 id=查看-java-进程列表-jps>查看 Java 进程列表: jps</h2>
-<pre><code>jps
+<pre tabindex=0><code>jps
 </code></pre><h2 id=查看-gc-信息-jstat>查看 gc 信息: jstat</h2>
-<pre><code>jstat -gcutil PID 毫秒数
+<pre tabindex=0><code>jstat -gcutil PID 毫秒数
 </code></pre><p><img src=https://cdn.jsdelivr.net/gh/scopor/cdn@1.0.5/20200318234128.png alt=GC信息></p>
-<pre><code>jstat -gc PID 毫秒数
+<pre tabindex=0><code>jstat -gc PID 毫秒数
 jstat -gcnew PID
 jstat -gcold PID
 </code></pre><h2 id=查看线程信息-jstack>查看线程信息: jstack</h2>
-<pre><code>jstack PID
+<pre tabindex=0><code>jstack PID
 </code></pre><h2 id=查看内存状态-jmap>查看内存状态: jmap</h2>
-<pre><code># 导出到文件中，需要使用其它工具打开  
+<pre tabindex=0><code># 导出到文件中，需要使用其它工具打开  
 jmap -dump:file=file PID
 # 直接在控制台查看  
 jmap -heap PID
 </code></pre><p><img src=https://cdn.jsdelivr.net/gh/scopor/cdn@1.0.5/20200318235218.png alt=heap信息></p>
 <h2 id=查看进程扩展参数信息jinfo>查看进程扩展参数信息：jinfo</h2>
-<pre><code>jinfo PID
+<pre tabindex=0><code>jinfo PID
 </code></pre><h2 id=内存溢出时自动导出内存信息>内存溢出时自动导出内存信息</h2>
-<pre><code>-XX:+HeapDumpOnOutOfMemoryError
+<pre tabindex=0><code>-XX:+HeapDumpOnOutOfMemoryError
 </code></pre><h2 id=打印-gc-日志-使用-gceasy1-在线工具导入可分析>打印 GC 日志, 使用 <a href=https://www.gceasy.io/>GCeasy</a> 在线工具导入可分析</h2>
-<pre><code>-XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:./gc.log
+<pre tabindex=0><code>-XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:./gc.log
 </code></pre></div>
 <div class=post_footer>
 <div class=meta>

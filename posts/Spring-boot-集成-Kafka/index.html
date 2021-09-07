@@ -78,13 +78,13 @@
 <span class=date>2020.05.16</span>
 </div>
 <div class="post_content markdown"><h3 id=pom-引入-spring-boot-kafka>POM 引入 Spring-boot-kafka</h3>
-<pre><code>&lt;dependency&gt;
+<pre tabindex=0><code>&lt;dependency&gt;
     &lt;groupId&gt;org.springframework.kafka&lt;/groupId&gt;
     &lt;artifactId&gt;spring-kafka&lt;/artifactId&gt;
     &lt;version&gt;1.1.1.RELEASE&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre><h3 id=创建启动类>创建启动类</h3>
-<pre><code>@SpringBootApplication
+<pre tabindex=0><code>@SpringBootApplication
 public class KafkaApplication {
 
     public static void main(String[] args) {
@@ -93,7 +93,7 @@ public class KafkaApplication {
 
 }
 </code></pre><h3 id=创建生产者配置类>创建生产者配置类</h3>
-<pre><code>
+<pre tabindex=0><code>
 @Configuration
 public class ProducerConfiguration {
 
@@ -128,7 +128,7 @@ public class ProducerConfiguration {
 }
 
 </code></pre><h3 id=创建生产者>创建生产者</h3>
-<pre><code>
+<pre tabindex=0><code>
 public class Producer {
 
     private static final Logger logger = LoggerFactory.getLogger(Producer.class);
@@ -156,7 +156,7 @@ public class Producer {
 }
 
 </code></pre><h3 id=消费者配置类>消费者配置类</h3>
-<pre><code>
+<pre tabindex=0><code>
 @Configuration
 public class ConsumerConfiguration {
 
@@ -193,7 +193,7 @@ public class ConsumerConfiguration {
 }
 
 </code></pre><h3 id=消费者>消费者</h3>
-<pre><code>
+<pre tabindex=0><code>
 public class Consumer {
 
     public Consumer() {
@@ -215,7 +215,7 @@ public class Consumer {
 }
 
 </code></pre><h3 id=测试类>测试类</h3>
-<pre><code>
+<pre tabindex=0><code>
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class KafkaApplicationTests {

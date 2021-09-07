@@ -81,30 +81,30 @@
 <ul>
 <li>配置用户名和邮箱信息</li>
 </ul>
-<pre><code>git config --global user.name xxx
+<pre tabindex=0><code>git config --global user.name xxx
 git config --global user.email xxx@xxx.com
 </code></pre><ul>
 <li>配置 Linux 和 Windows 自动换行符</li>
 </ul>
-<pre><code>git config --global core.autocrlf true
+<pre tabindex=0><code>git config --global core.autocrlf true
 </code></pre><p>备注`：如果是在 windows 上进行打包操作，然后发布到 Linux 环境测试，可使用 IDEA 换行符工具进行转换。</p>
 <p>​ <img src=https://cdn.jsdelivr.net/gh/scopor/cdn@1.0.8/20200508152451741.png alt=换行符转换></p>
 <ul>
 <li>配置代理信息</li>
 </ul>
-<pre><code># 如果需要用户名和密码验证，代理URL格式可能为http://username:pssaword@ip:port。ip 也可替换成域名
+<pre tabindex=0><code># 如果需要用户名和密码验证，代理URL格式可能为http://username:pssaword@ip:port。ip 也可替换成域名
 git config --global http.proxy http://ip:port
 git config --global https.proxy https://ip:port
-</code></pre><pre><code># 关闭 SSL 验证
+</code></pre><pre tabindex=0><code># 关闭 SSL 验证
 git config https.sslverify false 
 </code></pre><ul>
 <li>查询 Git 全局配置列表</li>
 </ul>
-<pre><code>git config --global -l
+<pre tabindex=0><code>git config --global -l
 </code></pre><ul>
 <li>删除配置</li>
 </ul>
-<pre><code>git config --global --unset 配置项
+<pre tabindex=0><code>git config --global --unset 配置项
 </code></pre></div>
 <div class=post_footer>
 <div class=meta>

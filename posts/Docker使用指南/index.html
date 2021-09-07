@@ -78,47 +78,47 @@
 <span class=date>2020.03.06</span>
 </div>
 <div class="post_content markdown"><h2 id=查看镜像列表>查看镜像列表</h2>
-<pre><code>docker images
+<pre tabindex=0><code>docker images
 docker images -a
 </code></pre><h2 id=搜索镜像>搜索镜像</h2>
-<pre><code>docker search java 
+<pre tabindex=0><code>docker search java 
 </code></pre><h2 id=下载镜像>下载镜像</h2>
-<pre><code>docker pull java
+<pre tabindex=0><code>docker pull java
 </code></pre><h2 id=运行容器>运行容器</h2>
-<pre><code>docker run 镜像ID
+<pre tabindex=0><code>docker run 镜像ID
 </code></pre><h2 id=停止容器>停止容器</h2>
-<pre><code>docker stop 容器ID
+<pre tabindex=0><code>docker stop 容器ID
 # 批量停止容器
 docker stop `docker ps -a -q`
 </code></pre><h2 id=重启容器>重启容器</h2>
-<pre><code>docker restart 容器ID
+<pre tabindex=0><code>docker restart 容器ID
 </code></pre><h2 id=启动容器>启动容器</h2>
-<pre><code>docker start 容器ID
+<pre tabindex=0><code>docker start 容器ID
 </code></pre><h2 id=删除容器>删除容器</h2>
-<pre><code>docker rm -f 容器ID
+<pre tabindex=0><code>docker rm -f 容器ID
 # 批量删除容器
 docker rm `docker ps -a -q`
 </code></pre><h2 id=查看容器列表>查看容器列表</h2>
-<pre><code># 运行中的容器
+<pre tabindex=0><code># 运行中的容器
 docker ps
 # 所有容器，包括停止的
 docker ps -a
 </code></pre><h2 id=查看容器日志>查看容器日志</h2>
-<pre><code>docker logs 容器ID
+<pre tabindex=0><code>docker logs 容器ID
 </code></pre><h2 id=进入容器>进入容器</h2>
-<pre><code>docker exec -it 容器ID /bin/bash
+<pre tabindex=0><code>docker exec -it 容器ID /bin/bash
 docker exec -it 容器ID /bin/sh
 </code></pre><h2 id=查看容器配置>查看容器配置</h2>
-<pre><code>docker inspect 容器ID
+<pre tabindex=0><code>docker inspect 容器ID
 </code></pre><h2 id=查看容器占用资源的情况>查看容器占用资源的情况</h2>
-<pre><code># 默认每秒一次
+<pre tabindex=0><code># 默认每秒一次
 docker stats
 # 只查询当前的状态
 docker stats --no-stream
 </code></pre><h2 id=镜像导出>镜像导出</h2>
-<pre><code>docker save 镜像ID &gt; path/file
+<pre tabindex=0><code>docker save 镜像ID &gt; path/file
 </code></pre><h2 id=镜像导入>镜像导入</h2>
-<pre><code>docker load &lt; path/file
+<pre tabindex=0><code>docker load &lt; path/file
 </code></pre></div>
 <div class=post_footer>
 <div class=meta>

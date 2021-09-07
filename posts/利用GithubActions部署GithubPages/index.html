@@ -89,11 +89,11 @@
 <ul>
 <li>
 <p>使用 openssh 生成秘钥</p>
-<pre><code>ssh-keygen -t rsa -b 4096 -C &quot;scopor.github.io&quot;
+<pre tabindex=0><code>ssh-keygen -t rsa -b 4096 -C &quot;scopor.github.io&quot;
 </code></pre></li>
 <li>
 <p>设置存储秘钥的文件</p>
-<pre><code>Generating public/private rsa key pair.
+<pre tabindex=0><code>Generating public/private rsa key pair.
 Enter file in which to save the key (/c/Users/.ssh/id_rsa): /c/Users/.ssh/deploy
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
@@ -123,7 +123,7 @@ The key's randomart image is:
 </ul>
 <h2 id=配置-github-actions-脚本>配置 Github Actions 脚本</h2>
 <p>打开 scopor/life 工程中的 Actions，初始化界面左侧，就是需要改写的自动化脚本信息，下面是我的详细配置。</p>
-<pre><code># This is a basic workflow to help you get started with Actions
+<pre tabindex=0><code># This is a basic workflow to help you get started with Actions
 name: CI
 
 # 持续发布的分支

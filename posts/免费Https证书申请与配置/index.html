@@ -85,7 +85,7 @@ chmod a+x ./certbot-auto
 </code></pre></div><h3 id=申请免费证书>申请免费证书</h3>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>./certbot-auto certonly --standalone -d www.sanoon.me -d sanoon.me
 </code></pre></div><h3 id=nginx-证书配置80-端口强制跳转到-https>Nginx 证书配置，80 端口强制跳转到 https</h3>
-<pre><code>server {
+<pre tabindex=0><code>server {
     listen 80;
     listen [::]:80;
     server_name sanoon.me www.sanoon.me;
@@ -133,7 +133,7 @@ server {
 
 }
 </code></pre><h3 id=重启-nginx>重启 Nginx</h3>
-<pre><code>service nginx restart
+<pre tabindex=0><code>service nginx restart
 </code></pre><h3 id=定期更新证书可以配置成系统定时任务>定期更新证书,可以配置成系统定时任务</h3>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>./certbot-auto renew
 </code></pre></div></div>

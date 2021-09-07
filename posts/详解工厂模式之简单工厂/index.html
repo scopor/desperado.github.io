@@ -83,7 +83,7 @@
 <p>简单工厂又叫做静态工厂（<code>Static Factory Method</code>），是工厂模式的一种特殊实现，由一个工厂类根据不同的参数创建不同的子类对象。例如有这么一句诗，<code>春赏百花秋赏月，夏有凉风冬有雪</code>，一年有四季，四季各有不同的美景，每个季节都有固定的月份，那么我们可以通过当前的月份，利用简单工厂模式来告知我们现在处于哪个季节。</p>
 <p>首先我们抽象一下季节的接口，如下我们定义了季节接口，并提供一个拟人化行为接口，让四季告诉我们有什么美景。</p>
 <h3 id=季节接口>季节接口</h3>
-<pre><code>/**
+<pre tabindex=0><code>/**
  * 季节
  */
 public interface Seasons {
@@ -91,7 +91,7 @@ public interface Seasons {
 }
 </code></pre><p>其次，我们创建四季的实现类，并让每个季节说出自己的特色。</p>
 <h3 id=四季实现类>四季实现类</h3>
-<pre><code>/**
+<pre tabindex=0><code>/**
  * 春
  */
 public class Spring implements Seasons {
@@ -128,7 +128,7 @@ public class Winter implements Seasons {
 }
 </code></pre><p>接着，我们定义一下工厂类，创建不同的季节。</p>
 <h3 id=简单工厂类>简单工厂类</h3>
-<pre><code>/**
+<pre tabindex=0><code>/**
  * 季节工厂
  */
 public class SeasonsFactory {
@@ -157,7 +157,7 @@ public class SeasonsFactory {
 }
 </code></pre><p>最后，对于客户来说，只想知道现在这个月份有什么美景，而不用关心具体是什么季节。</p>
 <h3 id=客户端>客户端</h3>
-<pre><code>public class Client {
+<pre tabindex=0><code>public class Client {
     public static void main(String[] args) {
         Seasons seasons = SeasonsFactory.getSeasons(3);
         seasons.say();

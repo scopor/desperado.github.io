@@ -80,7 +80,7 @@
 <div class="post_content markdown"><ul>
 <li>安装</li>
 </ul>
-<pre><code>wget http://mirrors.hust.edu.cn/apache/zookeeper/zookeeper-3.4.11/zookeeper-3.4.11.tar.gz
+<pre tabindex=0><code>wget http://mirrors.hust.edu.cn/apache/zookeeper/zookeeper-3.4.11/zookeeper-3.4.11.tar.gz
 tar -zxvf zookeeper-3.4.11.tar.gz
 mv zookeeper-3.4.11 zookeeper
 
@@ -90,7 +90,7 @@ mkdir /tmp/zookeeper/log
 </code></pre><ul>
 <li>配置</li>
 </ul>
-<pre><code>cd zookeeper/conf/
+<pre tabindex=0><code>cd zookeeper/conf/
 vi zoo.cfg
 
 #写入以下信息
@@ -103,16 +103,16 @@ dataLogDir=/tmp/zookeeper/log
 </code></pre><ul>
 <li>启动</li>
 </ul>
-<pre><code>cd zookeeper/bin
+<pre tabindex=0><code>cd zookeeper/bin
 ./zkServer.sh start
 </code></pre><ul>
 <li>查看状态</li>
 </ul>
-<pre><code>./zkServer.sh status
+<pre tabindex=0><code>./zkServer.sh status
 </code></pre><ul>
 <li>停止</li>
 </ul>
-<pre><code>./zkServer.sh stop
+<pre tabindex=0><code>./zkServer.sh stop
 </code></pre></div>
 <div class=post_footer>
 <div class=meta>

@@ -80,9 +80,9 @@
 <div class="post_content markdown"><p>我们在开发过程中经常会遇到一些需要构造大批量数据的场景，开发者或使用 <code>SQL</code> 批量复制，或是专门写个程序跑一批数据，也有使用 <code>Excel</code> 下拉生成构造的，今天我们来介绍一款 <code>Python</code> 库，名叫 <code>Faker</code>，专门用来生成测试数据的，本文主要介绍下 <code>Faker</code> 的主要 <code>API</code>。</p>
 <p>​</p>
 <p>我们需要先安装下 <code>Faker</code></p>
-<pre><code>pip install Faker
+<pre tabindex=0><code>pip install Faker
 </code></pre><p>下面我们使用命令行来做一些简单的 <code>API</code> 测试</p>
-<pre><code>$ python
+<pre tabindex=0><code>$ python
 Python 3.8.0 (tags/v3.8.0:fa919fd, Oct 14 2019, 19:37:50) [MSC v.1916 64 bit (AMD64)] on win32
 Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
 # 导入工具库
@@ -107,7 +107,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 'b32b34db-dfc8-4824-91a5-4d5b10662ad7'
 </code></pre><p>是不是很方便，当然以上只是牛刀小试，下面按照 <code>API</code> 分类详细介绍下</p>
 <h3 id=网络参数>网络参数</h3>
-<pre><code># Mozilla/5.0 (X11; Linux i686) AppleWebKit/534.1 (KHTML, like Gecko) Chrome/57.0.853.0 Safari/534.1
+<pre tabindex=0><code># Mozilla/5.0 (X11; Linux i686) AppleWebKit/534.1 (KHTML, like Gecko) Chrome/57.0.853.0 Safari/534.1
 faker.chrome()
 faker.safari()
 faker.user_agent()             # Opera/8.17.(Windows NT 5.01; rw-RW) Presto/2.9.186 Version/10.00
@@ -160,7 +160,7 @@ faker.user_name()             # gwebb
 faker.password()              # *!8+VEOk5A
 faker.password(length=7, special_chars=True, digits=True, upper_case=True, lower_case=True) # e&amp;P5RxQ
 </code></pre><h3 id=日期参数>日期参数</h3>
-<pre><code>faker.am_pm()                 # 随机 AM、PM
+<pre tabindex=0><code>faker.am_pm()                 # 随机 AM、PM
 faker.date()                  # 随机日期 2020-12-09
 faker.date_between()          # 随机日期 30年前 - 今天，datetime.date(1989, 6, 4)
 faker.date_between(start_date='-1y', end_date='today') # 随机 1年前 - 今天，datetime.date(2020, 4, 3)
@@ -192,7 +192,7 @@ faker.timezone()              # 随机时区 Europe/Bucharest
 faker.unix_time()             # 随机时间戳 727373929
 faker.unix_time(start_datetime=datetime(2020,5,12)) # 设置开始时间，随机时间戳 1589340837
 </code></pre><h3 id=文件参数>文件参数</h3>
-<pre><code>faker.file_extension()        # 文件后缀 mov
+<pre tabindex=0><code>faker.file_extension()        # 文件后缀 mov
 faker.file_name()             # 文件名 forget.mov
 faker.file_name(category='image', extension='jpeg')   # 指定文件类型 serious.jpeg
 faker.file_path()             # 文件路径 together/consider.csv
@@ -205,7 +205,7 @@ faker.zip(uncompressed_size=256, num_files=4, min_file_size=32) # 压缩文件 z
 # 指定压缩格式   deflate|gzip|gz  bzip2|bz2  lzma|xz
 faker.zip(uncompressed_size=256, num_files=32, min_file_size=4, compression='bz2') 
 </code></pre><h3 id=地址参数>地址参数</h3>
-<pre><code>faker.coordinate()            # 随机坐标 Decimal('-130.832406')
+<pre tabindex=0><code>faker.coordinate()            # 随机坐标 Decimal('-130.832406')
 faker.latitude()              # 随机纬度 Decimal('31.708248')
 faker.longitude()             # 随机经度 Decimal('20.162607')
 faker.latlng()                # 随机纬度 + 经度 (Decimal('69.9854005'), Decimal('101.358041'))
@@ -240,7 +240,7 @@ faker.street_address()        # 随机街道地址 北京街S座
 faker.street_name()           # 随机路名 贵阳路
 faker.street_suffix()         # 街道后缀 街
 </code></pre><h3 id=个人信息参数>个人信息参数</h3>
-<pre><code># 中文信息
+<pre tabindex=0><code># 中文信息
 faker.name()                  # 范玉英
 faker.name_female()           # 女性名字 张桂花
 faker.name_male()             # 男性名字 陆俊
@@ -272,7 +272,7 @@ faker.simple_profile()        # 随机简易个人信息JSON格式
 'birthdate': datetime.date(1992, 10, 1)
 }
 </code></pre><h3 id=颜色参数>颜色参数</h3>
-<pre><code># 随机某个色系颜色 monochrome|red|orange|yellow|green|blue|purple|pink
+<pre tabindex=0><code># 随机某个色系颜色 monochrome|red|orange|yellow|green|blue|purple|pink
 faker.color(hue='monochrome')                                       # #383838
 # 随机亮色
 faker.color(luminosity='light')                                     # #bff3ff
@@ -292,7 +292,7 @@ faker.rgb_css_color()                                               # rgb(117,19
 faker.safe_color_name()                                             # aqua
 faker.safe_hex_color()                                              # #663300
 </code></pre><h3 id=文本参数>文本参数</h3>
-<pre><code># 一句文本
+<pre tabindex=0><code># 一句文本
 faker.paragraph()    
 # 十句文本
 faker.paragraph(nb_sentences=10, variable_nb_sentences=True, ext_word_list=None)
@@ -317,7 +317,7 @@ faker.word()
 # 单词列表
 faker.words(nb=10, ext_word_list=None, unique=False)
 </code></pre><h3 id=随机数>随机数</h3>
-<pre><code># MD5
+<pre tabindex=0><code># MD5
 faker.md5()                   # 72780389dea9129e7f1af7dbbdc9d845
 faker.md5(raw_output=True)    # 二进制 b'\xa5-\xac\xc2\xc4.\x05y&lt;\xcb\xff,\x1b\x889\xe2'
 # SHA1 | SHA256
@@ -376,7 +376,7 @@ faker.numerify(text='Intel Core i%-%%##K')                           # Intel Cor
 faker.hexify(text='MAC Address: ^^:^^:^^:^^:^^:^^')                  # MAC Address: 31:08:d5🇩🇪74:fe
 faker.hexify(text='MAC Address: ^^:^^:^^:^^:^^:^^', upper=True)      # MAC Address: 71:F4:37:8E:CD:79
 </code></pre><h3 id=按照数据类型随机数据>按照数据类型随机数据</h3>
-<pre><code>faker.pybool()               # 随机布尔值 False|True
+<pre tabindex=0><code>faker.pybool()               # 随机布尔值 False|True
 faker.boolean()              # 随机布尔值 False|True
 faker.boolean(chance_of_getting_true=25) # 随机布尔值 False|True
 faker.pydecimal()            # Decimal('49.2242')
@@ -420,12 +420,12 @@ faker.pytuple()              # 随机tuple
 Decimal('-15598244045554.3'), 'rIfHVzwcoVLMkJPyGlTI', 'rOFRBvgBnRjAPGdlwWmo',
 datetime.datetime(1994, 11, 30, 18, 1, 29), 'etpYZeNJmIrIiZuprNgr', 6333)
 </code></pre><h3 id=随机-json-数据>随机 <code>JSON</code> 数据</h3>
-<pre><code># JSON [(字段名, 方法名, {方法参数})]
+<pre tabindex=0><code># JSON [(字段名, 方法名, {方法参数})]
 faker.json(data_columns=[('id', 'pyint', {'max_value':20}), ('name', 'pystr')], num_rows=3)
 faker.json(data_columns=[('id', 'pyint'), ('details', (('name', 'email'), ))], num_rows=3)
 faker.json(data_columns=[('id', 'pyint'), ('details', [(None, 'user_name'), ])], num_rows=3)
 </code></pre><h3 id=批量生成--sql--测试数据示例>批量生成 <code>SQL</code> 测试数据示例</h3>
-<pre><code>&quot;&quot;&quot;
+<pre tabindex=0><code>&quot;&quot;&quot;
  * Create At 2020/12/09
  * TEST DATA
 &quot;&quot;&quot;
