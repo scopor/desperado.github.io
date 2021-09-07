@@ -6,10 +6,11 @@
 <meta http-equiv=pragma content="no-cache">
 <meta http-equiv=cache-control content="no-cache">
 <meta name=author content="Sanoon">
-<meta name=description content="开发过程中，我习惯将 `IDEA` 的 `Terminal` 替换成 `Git Bash`, 来模拟 `Linux` 环境的使用，在使用过程中发现，对于中文的显示都是乱码，本文记录下该问题的解决方案。">
-<meta name=keywords content="IDEA Console Git Bash Terminal 乱码,IDEA Terminal 替换">
-<link rel=canonical href=https://sanoon.me/posts/IDEA-Git-Terminal%E4%B9%B1%E7%A0%81%E8%A7%A3%E5%86%B3/>
-<title>IDEA Git Terminal 乱码解决 | Sanoon</title>
+<meta name=description content="Hi Lemon.">
+<meta name=keywords content="Java,Go,Python,Vue">
+<link rel=canonical href=https://sanoon.me/tags/Spring/>
+<link rel=alternate type=application/rss+xml href=https://sanoon.me/tags/Spring/index.xml>
+<title>Spring | Sanoon</title>
 <link rel="shortcut icon" href=https://sanoon.me/images/favicon.ico>
 <link rel=stylesheet href=https://sanoon.me/css/animate.min.css>
 <link rel=stylesheet href=https://sanoon.me/css/remixicon.css>
@@ -71,54 +72,18 @@
 </div>
 </div>
 <div class=content>
-<div class=post_page>
-<div class="post animated fadeInDown">
-<div class="post_title post_detail_title">
-<h2><a href=/posts/IDEA-Git-Terminal%E4%B9%B1%E7%A0%81%E8%A7%A3%E5%86%B3/>IDEA Git Terminal 乱码解决</a></h2>
-<span class=date>2021.09.07</span>
-</div>
-<div class="post_content markdown"><p>开发过程中，我习惯将 <code>IDEA</code> 的 <code>Terminal</code> 替换成 <code>Git Bash</code>, 来模拟 <code>Linux</code> 环境的使用，在使用过程中发现，对于中文的显示都是乱码，本文记录下该问题的解决方案。</p>
-<h2 id=idea-terminal-替换>IDEA Terminal 替换</h2>
-<ul>
-<li>打开 <code>settings</code> 设置界面，选择 <code>Tools</code> 中的 <code>Terminal</code> (File -> settings -> Tools -> Terminal)</li>
-<li>修改 <code>Shell path</code> 为你的 <code>Git bash</code> 安装路径，我的在 <code>D:\Program Files\Git\bin\bash.exe</code></li>
-<li>重新打开你的 <code>Terminal</code> 就能看到变成了经常看到的 <code>Git bash窗口</code></li>
-</ul>
-<p>当你的文件还有中文字符时，会发现回显中文都是乱码，这是由于 <code>Git bash</code> 对中文做了 <code>Unicode</code> 转码造成的。</p>
-<h2 id=乱码解决>乱码解决</h2>
-<p>首先找到 <code>Git</code> 的安装目录中下找到名为的 <code>bash.bashrc</code> 的配置文件，例如我的文件路径为: <code>D:\Program Files\Git\etc</code>， 在该文件的末尾添加如下内容</p>
-<pre tabindex=0><code>export LANG=&quot;zh_CN.UTF-8&quot;
-export LC_ALL=&quot;zh_CN.UTF-8&quot;
-</code></pre><p>保存后关闭 <code>IDEA</code> 的 <code>Terminal</code> 面板重新打开，或者重启 <code>IDEA</code>，再次查看中文已经回显正常。</p>
-</div>
-<div class=post_footer>
-<div class=meta>
-<div class=info>
-<span class="field tags">
-<i class=remixicon-stack-line></i>
-<a href=https://sanoon.me/tags/IDEA/>IDEA</a>
-</span>
+<div class=list_with_title>
+<div class=listing_title>2021</div>
+<div class=listing>
+<div class=listing_item>
+<div class=listing_post>
+<a href=/posts/Spring-%E4%BA%8B%E5%8A%A1%E8%AF%A6%E8%A7%A3/>Spring 事务详解</a>
+<div class=post_time><span class=date>09-07</span></div>
 </div>
 </div>
 </div>
-<div class=preAndNext style=margin-top:20px>
-<span><font color=red>Prev: </font><a class=previous href=https://sanoon.me/posts/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE-Windows%E7%AF%87/>前端开发环境配置-Windows篇</a></span>
-<span><font color=red>Next: </font><a class=next href=https://sanoon.me/posts/Spring-%E4%BA%8B%E5%8A%A1%E8%AF%A6%E8%A7%A3/>Spring 事务详解</a></span>
 </div>
-<script async src=https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js></script>
-<ins class=adsbygoogle style=display:block data-ad-client=ca-pub-6765261154701378 data-ad-slot=8034548941 data-ad-format=auto data-full-width-responsive=true></ins>
-<script>(adsbygoogle=window.adsbygoogle||[]).push({})</script>
-</div>
-<div class=doc_comments>
-<div class=comments_block_title>发表评论</div>
-<div id=vcomments></div>
-</div>
-<link rel=stylesheet href=https://sanoon.me/css/comments.css>
-<script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script>
-<script src=//unpkg.com/valine/dist/Valine.min.js></script>
-<script type=text/javascript>new Valine({el:'#vcomments',appId:'OLqTxeg1gvrPJ1ACgxP00SRd-MdYXbMMI',appKey:'64y2gAzoOfgjrFS083wLDKsA',placeholder:' ',visitor:'true'})</script>
-<img alt=今日诗词 src=https://v2.jinrishici.com/one.svg style="max-width:100%;display:block;margin:0 auto;padding-bottom:30px">
-</div>
+<div class=pagination></div>
 </div>
 <a id=back_to_top href=# class=back_to_top><span>△</span></a>
 </div>
