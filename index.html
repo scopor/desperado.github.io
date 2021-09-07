@@ -79,7 +79,7 @@
 </div>
 <div class=list>
 <div class="post_content markdown">
-<p>最近在开发过程中遇到了有个异常场景，数据库操作未回滚，查看代码已经标了注解 <code>@Transactional</code> ，查阅资料发现该注解只能用于受检异常(Unchecked Exception)， 对于运行时异常无效，除非使用其 <code>rollback</code> 属性声明，指定哪些运行时异常做回滚，经此发现对于 <code>Spring</code> 事务理解的还不够透彻，再次学习之，记录在此。......</p>
+<p>最近在开发过程中遇到了有个异常场景，数据库操作未回滚，查看代码已经标了<code>@Transactional</code>注解，查阅资料发现该注解默认只能用于运行时异常， 对于受检异常(Unchecked Exception)无效，除非使用其 <code>rollbackFor</code> 属性指定受检异常才有效，经此发现对于 <code>Spring</code> 事务理解的还不够透彻，再次学习之，记录在此。......</p>
 </div>
 </div>
 <div class=post_footer>
