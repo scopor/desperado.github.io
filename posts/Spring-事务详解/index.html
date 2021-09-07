@@ -77,7 +77,8 @@
 <h2><a href=/posts/Spring-%E4%BA%8B%E5%8A%A1%E8%AF%A6%E8%A7%A3/>Spring 事务详解</a></h2>
 <span class=date>2021.09.07</span>
 </div>
-<div class="post_content markdown"><h2 id=最近在开发过程中遇到了有个异常场景数据库操作未回滚查看代码已经标了transactional注解查阅资料发现该注解默认只能用于运行时异常-对于受检异常unchecked-exception无效除非使用其-rollbackfor-属性指定受检异常才有效经此发现对于-spring-事务理解的还不够透彻再次学习之记录在此>最近在开发过程中遇到了有个异常场景，数据库操作未回滚，查看代码已经标了<code>@Transactional</code>注解，查阅资料发现该注解默认只能用于运行时异常， 对于受检异常(Unchecked Exception)无效，除非使用其 <code>rollbackFor</code> 属性指定受检异常才有效，经此发现对于 <code>Spring</code> 事务理解的还不够透彻，再次学习之，记录在此。</h2>
+<div class="post_content markdown"><p>最近在开发过程中遇到了有个异常场景，数据库操作未回滚，查看代码已经标了<code>@Transactional</code>注解，查阅资料发现该注解默认只能用于运行时异常， 对于受检异常(Unchecked Exception)无效，除非使用其 <code>rollbackFor</code> 属性指定受检异常才有效，经此发现对于 <code>Spring</code> 事务理解的还不够透彻，再次学习之，记录在此。</p>
+<hr>
 <h2 id=什么是事务>什么是事务</h2>
 <blockquote>
 <p>事务，通常是指数据库事务，是由一组数据库操作序列构成的执行逻辑单元。并非任意的操作序列都是数据库事务，数据库事务有以下四个特性，即 <code>ACID</code> 特性。</p>
