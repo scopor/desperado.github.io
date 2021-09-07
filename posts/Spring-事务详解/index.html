@@ -77,7 +77,7 @@
 <h2><a href=/posts/Spring-%E4%BA%8B%E5%8A%A1%E8%AF%A6%E8%A7%A3/>Spring 事务详解</a></h2>
 <span class=date>2021.09.07</span>
 </div>
-<div class="post_content markdown"><p>最近在开发过程中遇到了有个异常场景，数据库操作未回滚，查看代码已经标了<code>@Transactional</code>注解，查阅资料发现该注解默认只能用于运行时异常， 对于受检异常(Unchecked Exception)无效，除非使用其 <code>rollbackFor</code> 属性指定受检异常才有效，经此发现对于 <code>Spring</code> 事务理解的还不够透彻，再次学习之，记录在此。</p>
+<div class="post_content markdown"><h2 id=最近在开发过程中遇到了有个异常场景数据库操作未回滚查看代码已经标了transactional注解查阅资料发现该注解默认只能用于运行时异常-对于受检异常unchecked-exception无效除非使用其-rollbackfor-属性指定受检异常才有效经此发现对于-spring-事务理解的还不够透彻再次学习之记录在此>最近在开发过程中遇到了有个异常场景，数据库操作未回滚，查看代码已经标了<code>@Transactional</code>注解，查阅资料发现该注解默认只能用于运行时异常， 对于受检异常(Unchecked Exception)无效，除非使用其 <code>rollbackFor</code> 属性指定受检异常才有效，经此发现对于 <code>Spring</code> 事务理解的还不够透彻，再次学习之，记录在此。</h2>
 <h2 id=什么是事务>什么是事务</h2>
 <blockquote>
 <p>事务，通常是指数据库事务，是由一组数据库操作序列构成的执行逻辑单元。并非任意的操作序列都是数据库事务，数据库事务有以下四个特性，即 <code>ACID</code> 特性。</p>
@@ -88,6 +88,7 @@
 <li>一致性：事务应确保数据库的状态从一个一致性状态转变为另一个一致性状态，数据库的完整性约束没有被破坏</li>
 <li>持久性：事务提交后，对数据的修改是永久的，不受其他操作或者故障的影响。</li>
 </ul>
+<hr>
 <h2 id=spring-对事务的支持>Spring 对事务的支持</h2>
 <blockquote>
 <p><code>Spring</code> 提供了一套事务管理机制，使用方式主要分为</p>
@@ -159,7 +160,8 @@ Class B <span style=color:#f92672>{</span>
        <span style=color:#75715e>//do something
 </span><span style=color:#75715e></span>    <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
-</code></pre></div><h2 id=transactional--注解的属性有哪些>@Transactional 注解的属性有哪些</h2>
+</code></pre></div><hr>
+<h2 id=transactional--注解的属性有哪些>@Transactional 注解的属性有哪些</h2>
 <ul>
 <li>事务传播行为 <code>propagtion</code></li>
 <li>事务隔离级别 <code>isolation</code></li>
@@ -287,6 +289,7 @@ Class B <span style=color:#f92672>{</span>
 <blockquote>
 <p>使用该属性可以指定的多个异常类型在抛出时，不回滚事务。</p>
 </blockquote>
+<hr>
 <h2 id=使用-事务注解transactional-时常见的失效行为>使用 事务注解<code>@Transactional</code> 时常见的失效行为</h2>
 <ul>
 <li>事务标记在非 public 方法上，标记在 private 或者 protected 方法上时失效且不会抛异常</li>
