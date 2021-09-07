@@ -79,7 +79,9 @@
 </div>
 <div class="post_content markdown"><p>最近在开发过程中遇到了有个异常场景，数据库操作未回滚，查看代码已经标了<code>@Transactional</code>注解，查阅资料发现该注解默认只能用于运行时异常， 对于受检异常(Unchecked Exception)无效，除非使用其 <code>rollbackFor</code> 属性指定受检异常才有效，经此发现对于 <code>Spring</code> 事务理解的还不够透彻，再次学习之，记录在此。</p>
 <h2 id=什么是事务>什么是事务</h2>
+<blockquote>
 <p>事务，通常是指数据库事务，是由一组数据库操作序列构成的执行逻辑单元。并非任意的操作序列都是数据库事务，数据库事务有以下四个特性，即 <code>ACID</code> 特性。</p>
+</blockquote>
 <ul>
 <li>原子性：事务作为一个整体被执行，这一组数据库操作要么全部被执行，要么都不执行</li>
 <li>隔离性：并发执行的各个事务互不干扰</li>
@@ -87,16 +89,20 @@
 <li>持久性：事务提交后，对数据的修改是永久的，不受其他操作或者故障的影响。</li>
 </ul>
 <h2 id=spring-对事务的支持>Spring 对事务的支持</h2>
-<p><code>Spring</code> 提供了一套事务管理机制，主要分为</p>
+<blockquote>
+<p><code>Spring</code> 提供了一套事务管理机制，使用方式主要分为</p>
+</blockquote>
 <ul>
 <li>编程式事务</li>
 <li>声明式事务</li>
 </ul>
 <h3 id=编程式事务>编程式事务</h3>
-<p>是手动在代码中做事务的管理，提交、回滚操作等，侵入性强，一般通过 <code>TransactionTemplate</code> 或 <code>TransactionManager</code> 操作管理，实际使用较少，示例代码如下：</p>
 <blockquote>
-<p>使用 <code>TransactionTemplate</code> 编程式事务管理操作示例</p>
+<p>是手动在代码中做事务的管理，提交、回滚操作等，侵入性强，一般通过 <code>TransactionTemplate</code> 或 <code>TransactionManager</code> 操作管理，实际使用较少，示例代码如下：</p>
 </blockquote>
+<ul>
+<li>使用 <code>TransactionTemplate</code> 编程式事务管理操作示例</li>
+</ul>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>save</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
     transactionTemplate<span style=color:#f92672>.</span><span style=color:#a6e22e>execute</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> TransactionCallbackWithoutResult<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
         <span style=color:#a6e22e>@Override</span>
@@ -110,11 +116,12 @@
         <span style=color:#f92672>}</span>
     <span style=color:#f92672>});</span>
 <span style=color:#f92672>}</span>
-</code></pre></div><blockquote>
-<p>使用 <code>TransactionManager</code> 编程式事务管理操作示例</p>
-</blockquote>
+</code></pre></div><ul>
+<li>使用 <code>TransactionManager</code> 编程式事务管理操作示例</li>
+</ul>
 <pre tabindex=0><code>public void save() {
-    TransactionStatus status = transactionManager.getTransaction(new DefaultTransactionDefinition());
+    DefaultTransactionDefinition defination = new DefaultTransactionDefinition();
+    TransactionStatus status = transactionManager.getTransaction(defination);
     try {
         saveModel(model);
         transactionManager.commit(status);
@@ -123,7 +130,9 @@
     }
 }
 </code></pre><h3 id=声明式事务>声明式事务</h3>
+<blockquote>
 <p>这是最常用的也是推荐的方法，通过 <code>AOP</code> 机制实现，使用方式是在类、方法、接口上标记注解 <code>@Transactional</code>。</p>
+</blockquote>
 <ul>
 <li>注解在类上，则该类中的所有 public 方法均支持事务</li>
 <li>注解在方法上，只能是 public 方法上，其他修饰符的方法不生效</li>
@@ -160,47 +169,61 @@ Class B <span style=color:#f92672>{</span>
 <li>不会滚 <code>noRollbackFor</code></li>
 </ul>
 <h3 id=事务传播行为>事务传播行为</h3>
+<blockquote>
 <p>事务传播行为，主要是为了解决业务方法之间调用的事务性问题，配置不同事务传播行为，方法有可能会继续使用当前已有的事务，也可能新开一个事务，或者使事务失效。事务传播行为主要以下几种：</p>
-<ul>
-<li>Propagation.REQUIRED: 默认事务。当前存在事务，则加入该事务；当前不存在事务，则创建新事务。假设 <code>Demo</code> 、A、B 三个类的 doBiz 都是用默认事务传播行为，那么 A、B 类中的方法均使用 Demo 类的事务传播行为。
+</blockquote>
+<h4 id=propagationrequired>Propagation.REQUIRED</h4>
+<blockquote>
+<p>默认事务。当前存在事务，则加入该事务；当前不存在事务，则创建新事务。假设 <code>Demo</code> 、A、B 三个类的 doBiz 都是用默认事务传播行为，那么 A、B 类中的方法均使用 Demo 类的事务传播行为。</p>
+</blockquote>
 <ul>
 <li>Demo 类的方法未配置事务，A、B 配置REQUIRED， 各自开启事务，A、B互不干扰，某一个回滚不影响另一个</li>
 <li>Demo 类的方法配置了事务 REQUIRED，A、B 配置REQUIRED， Demo、A、B 任何一个异常，三个均回滚</li>
 </ul>
-</li>
-<li>Propagation.SUPPORTS: 该事务传播行为是指当前存在事务，则加入该事务；当前不存在事务，则以非事务方式运行。假设 B 类的 doBiz 方法使用 SUPPORTS 事务传播行为，那么 Demo 类 doBiz 使用默认注解时， B 类的 doBiz 方法会加入 Demo 类的 doBiz 方法的事务中，如果 Demo 类的 doBiz 没有使用任何 @Transactional 注解时，B 类中的 doBiz 方法则不使用事务。
+<h4 id=propagationsupports>Propagation.SUPPORTS</h4>
+<blockquote>
+<p>该事务传播行为是指当前存在事务，则加入该事务；当前不存在事务，则以非事务方式运行。假设 B 类的 doBiz 方法使用 SUPPORTS 事务传播行为，那么 Demo 类 doBiz 使用默认注解时， B 类的 doBiz 方法会加入 Demo 类的 doBiz 方法的事务中，如果 Demo 类的 doBiz 没有使用任何 @Transactional 注解时，B 类中的 doBiz 方法则不使用事务。</p>
+</blockquote>
 <ul>
 <li>Demo 类的方法未配置事务，A、B 配置了SUPPORTS， 都以非事务执行，A、B互不干扰，无法回滚</li>
 <li>Demo 类的方法配置了事务 REQUIRED，A、B 配置了SUPPORTS，都加入该事务执行，Demo、A、B 任何一个异常，三个均回滚</li>
 </ul>
-</li>
-<li>Propagation.MANDATORY: 如果当前存在事务，则加入该事务；如果当前不存在事务，则抛出异常。假设 B 类的 doBiz 方法使用 MANDATORY 事务传播行为，那么 Demo 类 doBiz 使用默认注解时， B 类的 doBiz 方法会加入 Demo 类的 doBiz 方法的事务中，如果 Demo 类的 doBiz 没有使用任何 @Transactional 注解时，执行 B 类中的 doBiz 方法时抛出异常。
+<h4 id=propagationmandatory>Propagation.MANDATORY</h4>
+<blockquote>
+<p>如果当前存在事务，则加入该事务；如果当前不存在事务，则抛出异常。假设 B 类的 doBiz 方法使用 MANDATORY 事务传播行为，那么 Demo 类 doBiz 使用默认注解时， B 类的 doBiz 方法会加入 Demo 类的 doBiz 方法的事务中，如果 Demo 类的 doBiz 没有使用任何 @Transactional 注解时，执行 B 类中的 doBiz 方法时抛出异常。</p>
+</blockquote>
 <ul>
 <li>Demo 类的方法未配置事务，A、B 配置MANDATORY，A、B 执行时抛出异常</li>
 <li>Demo 类的方法配置了事务 REQUIRED，A、B 配置了MANDATORY，都加入该事务执行，Demo、A、B 任何一个异常，三个均回滚</li>
 </ul>
-</li>
-<li>Propagation.REQUIRES_NEW: 重新创建一个新的事务，如果当前存在事务，暂停当前的事务。假设 A 、B 类中的 doBiz 方法使用了 REQUIRES_NEW 事务传播行为，那么不管 Demo 类存在事务，则在执行 A、B 类的 doBiz 方法时暂停 Demo 类的 doBiz 方法的事务，执行 A、B 类的 doBiz 方法时都会各自新建一个事务。
+<h4 id=propagationrequires_new>Propagation.REQUIRES_NEW</h4>
+<blockquote>
+<p>重新创建一个新的事务，如果当前存在事务，暂停当前的事务。假设 A 、B 类中的 doBiz 方法使用了 REQUIRES_NEW 事务传播行为，那么不管 Demo 类存在事务，则在执行 A、B 类的 doBiz 方法时暂停 Demo 类的 doBiz 方法的事务，执行 A、B 类的 doBiz 方法时都会各自新建一个事务。</p>
+</blockquote>
 <ul>
 <li>Demo 类的方法未配置事务，A、B 配置REQUIRES_NEW，A、B 新建事务执行，互不干扰，各自异常各自回滚</li>
 <li>Demo 类的方法配置了事务 REQUIRED，A、B 配置REQUIRES_NEW，A、B 新建事务执行，互不干扰，Demo、A、B 各自异常各自回滚</li>
 </ul>
-</li>
-<li>Propagation.NOT_SUPPORTED: 以非事务的方式运行，如果当前存在事务，暂停当前的事务。假设 A 、B 类中的 doBiz 方法使用了 NOT_SUPPORTED 事务传播行为，那么不管 Demo 类存在事务，则在执行 A、B 类的 doBiz 方法时都会暂停 Demo 类的 doBiz 方法的事务， 并以非事务的方式执行 A、B 类的 doBiz 方法。
+<h4 id=propagationnot_supported>Propagation.NOT_SUPPORTED</h4>
+<blockquote>
+<p>以非事务的方式运行，如果当前存在事务，暂停当前的事务。假设 A 、B 类中的 doBiz 方法使用了 NOT_SUPPORTED 事务传播行为，那么不管 Demo 类存在事务，则在执行 A、B 类的 doBiz 方法时都会暂停 Demo 类的 doBiz 方法的事务， 并以非事务的方式执行 A、B 类的 doBiz 方法。</p>
+</blockquote>
 <ul>
 <li>不管 Demo 类的方法是否配置了事务，A、B配置了NOT_SUPPORTED ，A、B都以非事务方式执行，无法回滚</li>
 </ul>
-</li>
-<li>Propagation.NEVER: 以非事务的方式运行，如果当前存在事务，则抛出异常。假设 A 、B 类中的 doBiz 方法使用了 NEVER事务传播行为，那么 Demo 类存在事务，则在执行 A、B 类的 doBiz 方法时会抛出异常。如果 Demo 类不存在事务，那么以非事务方式执行 A、B 类的 doBiz 方法。
+<h4 id=propagationnever>Propagation.NEVER</h4>
+<blockquote>
+<p>以非事务的方式运行，如果当前存在事务，则抛出异常。假设 A 、B 类中的 doBiz 方法使用了 NEVER事务传播行为，那么 Demo 类存在事务，则在执行 A、B 类的 doBiz 方法时会抛出异常。如果 Demo 类不存在事务，那么以非事务方式执行 A、B 类的 doBiz 方法。</p>
+</blockquote>
 <ul>
 <li>Demo 类的方法配置了事务REQUIRED，A、B配置了NEVER，A、B方法执行时抛出异常</li>
 </ul>
-</li>
-<li>Propagation.NESTED: 如果当前存在事务，则创建新的事务作为当前事务的嵌套事务来运行，如果当前没有事务，则等价于默认事务REQUIRED。
+<h4 id=propagationnested>Propagation.NESTED</h4>
+<blockquote>
+<p>如果当前存在事务，则创建新的事务作为当前事务的嵌套事务来运行，如果当前没有事务，则等价于默认事务REQUIRED。</p>
+</blockquote>
 <ul>
 <li>Demo 类的方法配置了事务REQUIRED， A、B配置了NESTED， A、B方法执行时，会开启自己的事务，且只回滚自己的事务，不影响 Demo 类方法的事务和其他子事务，即 A 方法回滚，不会造成 Demo 和 B 的方法回滚。</li>
-</ul>
-</li>
 </ul>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Demo</span> <span style=color:#f92672>{</span>
     <span style=color:#a6e22e>@Transactional</span>
@@ -224,7 +247,9 @@ Class B <span style=color:#f92672>{</span>
 </span><span style=color:#75715e></span>    <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
 </code></pre></div><h3 id=事务隔离级别>事务隔离级别</h3>
+<blockquote>
 <p>Spring 定义了五个事务隔离级别，分别是：</p>
+</blockquote>
 <ul>
 <li><strong><code>TransactionDefinition.ISOLATION_DEFAULT</code></strong> : 使用数据库默认的隔离级别，MySQL 默认采用的 <code>REPEATABLE_READ</code> 隔离级别， 而 Oracle 默认采用的 <code>READ_COMMITTED</code> 隔离级别</li>
 <li><strong><code>TransactionDefinition.ISOLATION_READ_UNCOMMITTED</code></strong> : 最低的隔离级别，使用这个隔离级别很少，因为它允许读取尚未提交的数据变更，<strong>可能会导致脏读<sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup>、幻读<sup id=fnref:2><a href=#fn:2 class=footnote-ref role=doc-noteref>2</a></sup>或不可重复读<sup id=fnref:3><a href=#fn:3 class=footnote-ref role=doc-noteref>3</a></sup></strong></li>
@@ -243,17 +268,25 @@ Class B <span style=color:#f92672>{</span>
 <p>InnoDB 存储引擎在 <strong>分布式事务</strong> 的情况下一般会用到 <strong>SERIALIZABLE(可串行化)</strong> 隔离级别。</p>
 </blockquote>
 <h3 id=超时属性>超时属性</h3>
+<blockquote>
 <p>事务超时指的是事务被允许执行的最长时间，如果在改时间限制内事务还没有执行完成，则自动回滚该事务。超时时间默认值为 -1 ，即不超时。</p>
+</blockquote>
 <h3 id=只读属性>只读属性</h3>
+<blockquote>
 <p>读操作为什么要配置事务只读属性？你一定也会有这样的疑问，当你执行一组查询语句时，可能会需要设置只读属性。</p>
+</blockquote>
 <ul>
 <li>如果你只执行一条查询语句，那么确实没必要配置事务，数据库默认支持读一致性</li>
 <li>如果你一次执行若干条语句，例如统计、报表之类的查询，此背景下多条 SQL 必须保证整体的读一致性，否则在查询不同的语句之间，另一个事务插入一条数据，那么会造成汇总和明细的不一致，此时就需要配置事务的只读属性。</li>
 </ul>
 <h3 id=回滚属性>回滚属性</h3>
+<blockquote>
 <p>使用该属性可以指定在抛出某些异常的时候做事务回滚。默认不指定时，只对 Error 和 RuntimeException 异常做回滚。</p>
+</blockquote>
 <h3 id=不回滚属性>不回滚属性</h3>
+<blockquote>
 <p>使用该属性可以指定的多个异常类型在抛出时，不回滚事务。</p>
+</blockquote>
 <h2 id=使用-事务注解transactional-时常见的失效行为>使用 事务注解<code>@Transactional</code> 时常见的失效行为</h2>
 <ul>
 <li>事务标记在非 public 方法上，标记在 private 或者 protected 方法上时失效且不会抛异常</li>
