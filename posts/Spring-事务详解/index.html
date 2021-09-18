@@ -1,5 +1,6 @@
 <!doctype html><html lang=zh-cn>
 <head>
+<title>Spring 事务详解 | Sanoon</title>
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
 <meta name=viewport content="width=device-width,initial-scale=1">
@@ -9,7 +10,6 @@
 <meta name=description content="最近在开发过程中遇到了有个异常场景，数据库操作未回滚，查看代码已经标了`@Transactional`注解，查阅资料发现该注解默认只能用于运行时异常， 对于受检异常(Unchecked Exception)无效，除非使用其 `rollbackFor` 属性指定受检异常才有效，经此发现对于 `Spring` 事务理解的还不够透彻，再次学习之，记录在此。">
 <meta name=keywords content="Spring事务、传播机制、隔离级别、@Transactional失效">
 <link rel=canonical href=https://sanoon.me/posts/Spring-%E4%BA%8B%E5%8A%A1%E8%AF%A6%E8%A7%A3/>
-<title>Spring 事务详解 | Sanoon</title>
 <link rel="shortcut icon" href=https://sanoon.me/images/favicon.ico>
 <link rel=stylesheet href=https://sanoon.me/css/animate.min.css>
 <link rel=stylesheet href=https://sanoon.me/css/remixicon.css>
