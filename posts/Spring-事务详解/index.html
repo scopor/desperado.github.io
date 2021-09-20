@@ -74,7 +74,7 @@
 <div class="post animated fadeInDown">
 <div class="post_title post_detail_title">
 <h2><a href=/posts/Spring-%E4%BA%8B%E5%8A%A1%E8%AF%A6%E8%A7%A3/>Spring 事务详解</a></h2>
-<span class=date>2021.09.07</span>
+<span class=date>2021.09.07 | 共 3715 字，阅读需约 8 分钟.</span>
 </div>
 <div class="post_content markdown"><p>最近在开发过程中遇到了有个异常场景，数据库操作未回滚，查看代码已经标了<code>@Transactional</code>注解，查阅资料发现该注解默认只能用于运行时异常， 对于受检异常(Unchecked Exception)无效，除非使用其 <code>rollbackFor</code> 属性指定受检异常才有效，经此发现对于 <code>Spring</code> 事务理解的还不够透彻，再次学习之，记录在此。</p>
 <hr>

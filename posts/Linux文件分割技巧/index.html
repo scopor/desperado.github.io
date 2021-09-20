@@ -74,7 +74,7 @@
 <div class="post animated fadeInDown">
 <div class="post_title post_detail_title">
 <h2><a href=/posts/Linux%E6%96%87%E4%BB%B6%E5%88%86%E5%89%B2%E6%8A%80%E5%B7%A7/>Linux 文件分割技巧</a></h2>
-<span class=date>2020.12.10</span>
+<span class=date>2020.12.10 | 共 375 字，阅读需约 1 分钟.</span>
 </div>
 <div class="post_content markdown"><p>昨天生成了 <code>500W</code> 数据库插入语句，发现我司数据库导入数据有限制，每次只能提交 <code>1M</code> 的数据，因此在生成数据的脚本中，每 <code>5000</code> 行，重新设置 <code>INSERT INTO TABLE</code> 语句，准备按照 <code>INSERT</code> 标记进行文件切割。过程中用到了 <code>Linux</code> 命令 <code>split</code> 和 <code>csplit</code>。</p>
 <h3 id=linux--split-命令><code>Linux</code> <code>split</code> 命令</h3>
