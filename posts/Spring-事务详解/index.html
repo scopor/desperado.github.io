@@ -74,7 +74,7 @@
 <div class="post animated fadeInDown">
 <div class="post_title post_detail_title">
 <h2><a href=/posts/Spring-%E4%BA%8B%E5%8A%A1%E8%AF%A6%E8%A7%A3/>Spring 事务详解</a></h2>
-<span class=date>2021.09.07 | 共 3715 字，阅读需约 8 分钟.</span>
+<span class=date>2021.09.07 | 共 3797 字，阅读需约 8 分钟.</span>
 </div>
 <div class="post_content markdown"><p>最近在开发过程中遇到了有个异常场景，数据库操作未回滚，查看代码已经标了<code>@Transactional</code>注解，查阅资料发现该注解默认只能用于运行时异常， 对于受检异常(Unchecked Exception)无效，除非使用其 <code>rollbackFor</code> 属性指定受检异常才有效，经此发现对于 <code>Spring</code> 事务理解的还不够透彻，再次学习之，记录在此。</p>
 <hr>
@@ -294,7 +294,8 @@ Class B <span style=color:#f92672>{</span>
 <ul>
 <li>事务标记在非 public 方法上，标记在 private 或者 protected 方法上时失效且不会抛异常</li>
 <li>数据库引擎不支持事务，如 MySQL 的 <em>MyISAM</em> 引擎</li>
-<li>同一个类 A 的 B 方法中调用了标记有事务注解的 C 方法，C 方法的事务失效，这是由于 Spring AOP 代理造成的，因为只有当事务方法被当前类以外的代码调用时，才会由 Spring 生成的代理对象来管理</li>
+<li>同一个类 A 的 B 方法中调用了标记有事务注解的 C 方法，C 方法的事务失效，这是属于 this 内部调用，和 IOC 反转控制无关，不走 Spring AOP 代理，因为只有当事务方法被当前类以外的代码调用时，才会由 Spring 生成的代理对象来管理</li>
+<li>继承失效，当基类 A 中的方法 C 打了事务注解，其子类 B 的 D 方法调用了父类 A 的方法 C，此时因为使用的是 super 关键字调用的，也不走 Spring AOP 机制，因此失效</li>
 <li>A 方法标记了事务注解，A 方法调用的 B 方法抛出了异常，但被 A 捕获了，此时不回滚，除非捕获后继续抛出指定的异常或者运行时异常</li>
 <li>抛出的异常不在 rollbackFor 指定的异常中</li>
 <li>事务传播机制配置为SUPPORTS、NOT_SUPPORTED、NEVER时，前两个会以非事务方式运行，NEVER则直接抛出异常</li>
